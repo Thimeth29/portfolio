@@ -42,7 +42,7 @@ export default function About() {
             >
               <div className="absolute inset-0 bg-[#3B82F6]/10 group-hover:bg-transparent transition-colors duration-300 z-10" />
               <Image
-                src="/profile.jpg"
+                src="./profile.jpg"
                 alt="Thimeth Chathnuka Portrait"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
