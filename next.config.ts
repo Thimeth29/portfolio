@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // If your GitHub repository is named 'portfolio', uncomment the next line:
-  // basePath: "/portfolio",
+  basePath: "/portfolio",
+  assetPrefix: "/portfolio/",
 };
 
 export default nextConfig;
