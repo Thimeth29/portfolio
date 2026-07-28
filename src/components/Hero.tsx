@@ -193,7 +193,7 @@ export default function Hero() {
                 alt="Thimeth Chathnuka"
                 fill
                 priority
-                className="object-cover scale-[1.05] hover:scale-[1.12] transition-transform duration-500"
+                className="object-cover object-top scale-[1.05] hover:scale-[1.12] transition-transform duration-500"
               />
             </motion.div>
 
