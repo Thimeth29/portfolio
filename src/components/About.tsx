@@ -15,7 +15,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 border-t border-white/5 relative">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Title */}
         <div className="flex flex-col items-start mb-16">
           <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-sm uppercase tracking-wider">
@@ -30,7 +30,7 @@ export default function About() {
 
         {/* Content Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Column: Bio details (7 spans) */}
           <div className="lg:col-span-7 flex flex-col text-left">
             <motion.h3
