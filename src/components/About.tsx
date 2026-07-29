@@ -29,35 +29,16 @@ export default function About() {
         </div>
 
         {/* Content Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Image wrapper */}
-          <div className="lg:col-span-5 flex justify-center">
-            <motion.div
-              whileInView={{ opacity: 1, scale: 1 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="relative w-full max-w-[340px] aspect-[1/1.1] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group"
-            >
-              <div className="absolute inset-0 bg-[#3B82F6]/10 group-hover:bg-transparent transition-colors duration-300 z-10" />
-              <Image
-                src="./profile.jpg"
-                alt="Thimeth Chathnuka Portrait"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </motion.div>
-          </div>
-
-          {/* Right Column: Bio details */}
-          <div className="lg:col-span-7 flex flex-col">
+          {/* Left Column: Bio details (7 spans) */}
+          <div className="lg:col-span-7 flex flex-col text-left">
             <motion.h3
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 15 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-2xl font-bold text-white mb-6"
+              className="text-2xl sm:text-3xl font-bold text-white mb-6"
             >
               Translating code into scalable products.
             </motion.h3>
@@ -72,22 +53,35 @@ export default function About() {
               I am an undergraduate pursuing a degree in Computing & IT at SLTC. My path centers around developing secure, robust solutions across mobile apps (Flutter), cloud computing infrastructure, and backend integrations. I seek to bridge the gap between design concepts and scalable, robust deployments.
             </motion.p>
 
+            <motion.p
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 15 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-gray-400 leading-relaxed"
+            >
+              Whether it is architecting REST APIs, fine-tuning neural network modules for predictive features, or securing deployment environments, I focus on coding practices that yield clean, maintainable systems.
+            </motion.p>
+          </div>
+
+          {/* Right Column: Credentials & Stats (5 spans) */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Quick Education Details Card */}
             <motion.div
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 15 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="glass-card p-6 rounded-2xl border border-white/10 mb-8 flex flex-col gap-4 text-left"
+              className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col gap-4 text-left"
             >
               <div className="flex items-start gap-4">
                 <GraduationCap className="w-6 h-6 text-[#3B82F6] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-bold text-white text-base">BSc (Hons) in Cloud Computing</h4>
-                  <p className="text-sm text-gray-400">SLTC Research University, Sri Lanka</p>
+                  <p className="text-sm text-gray-400 font-mono">SLTC Research University, Sri Lanka</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 text-sm text-gray-400 font-mono">
+              <div className="flex items-center gap-4 text-xs text-gray-400 font-mono">
                 <div className="flex items-center gap-1">
                   <MapPin className="w-4 h-4 text-gray-500" />
                   Sri Lanka
@@ -101,7 +95,7 @@ export default function About() {
             </motion.div>
 
             {/* Stats Counter Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
