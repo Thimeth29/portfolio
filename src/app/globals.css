@@ -2,54 +2,90 @@
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-space: var(--font-space-grotesk), sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   
-  --color-bg-primary: #09090B;
-  --color-bg-secondary: #111827;
-  
+  --color-bg-primary: #050505;
+  --color-bg-secondary: #0B0B0B;
+  --color-card: #111111;
   --color-accent-primary: #3B82F6;
   --color-accent-secondary: #60A5FA;
   --color-accent-dark: #2563EB;
+  --color-text-secondary: #A1A1AA;
+}
+
+/* Lenis Smooth Scroll Recommended Rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090B;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1F2937;
+  background: #27272A;
   border-radius: 999px;
-  border: 2px solid #09090B;
+  border: 1px solid #050505;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3B82F6;
 }
 
-/* Glassmorphism utility */
+/* Premium noise/grain overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Premium layout panel configurations */
 .glass-panel {
-  background: rgba(17, 24, 39, 0.6);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(17, 17, 17, 0.4);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Animated interactive grid background */
+/* Grid overlay background style */
 .grid-bg {
-  background-size: 50px 50px;
+  background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
 }
 
-/* Custom cursor hides standard arrow on pointer devices */
+/* Hide cursor on desktop pointer devices */
 @media (any-pointer: fine) {
   .custom-cursor-active, 
   .custom-cursor-active a, 

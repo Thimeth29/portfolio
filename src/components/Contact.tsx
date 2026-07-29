@@ -25,16 +25,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 border-t border-white/5 relative bg-[#09090B]">
+    <section id="contact" className="py-24 border-t border-white/5 relative bg-[#050505] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Title */}
         <div className="flex flex-col items-start mb-16">
           <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-sm uppercase tracking-wider">
             <Mail className="w-4 h-4" />
-            07 / Connect
+            06 / Connect
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase font-space">
             Get In Touch
           </h2>
           <div className="w-16 h-1 bg-[#3B82F6] mt-4 rounded-full" />

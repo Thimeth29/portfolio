@@ -1,28 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Award, BookOpen, GraduationCap, MapPin } from "lucide-react";
-import Image from "next/image";
+import { User, GraduationCap, MapPin, BookOpen, Heart, Target, Compass } from "lucide-react";
 
 const stats = [
   { value: "05+", label: "Projects Completed" },
-  { value: "10+", label: "Technologies Used" },
-  { value: "800+", label: "Learning Hours" },
-  { value: "06+", label: "Certificates" },
+  { value: "10+", label: "Technologies Learned" },
+  { value: "2+", label: "Years Learning" },
+  { value: "500+", label: "GitHub Commits" },
+];
+
+const interests = [
+  "Cloud Computing",
+  "Software Engineering",
+  "Artificial Intelligence",
+  "Flutter Dev",
+  "Backend Dev"
 ];
 
 export default function About() {
   return (
     <section id="about" className="py-24 border-t border-white/5 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      {/* Glow aura */}
+      <div className="absolute left-0 bottom-1/4 w-80 h-80 bg-[#3B82F6]/5 rounded-full blur-[100px] pointer-events-none" />
 
+      <div className="max-w-7xl mx-auto px-6">
+        
         {/* Title */}
         <div className="flex flex-col items-start mb-16">
           <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-sm uppercase tracking-wider">
             <User className="w-4 h-4" />
             01 / Identity
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase font-space">
             About Me
           </h2>
           <div className="w-16 h-1 bg-[#3B82F6] mt-4 rounded-full" />
@@ -30,7 +40,7 @@ export default function About() {
 
         {/* Content Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
+          
           {/* Left Column: Bio details (7 spans) */}
           <div className="lg:col-span-7 flex flex-col text-left">
             <motion.h3
@@ -38,34 +48,69 @@ export default function About() {
               initial={{ opacity: 0, y: 15 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-2xl sm:text-3xl font-bold text-white mb-6"
+              className="text-2xl sm:text-3xl font-bold text-white mb-6 font-space"
             >
               Translating code into scalable products.
             </motion.h3>
 
-            <motion.p
+            {/* Who I Am */}
+            <motion.div
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 15 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-gray-400 leading-relaxed mb-6"
+              transition={{ duration: 0.5, delay: 0.08 }}
+              className="mb-6"
             >
-              I am an undergraduate pursuing a degree in Computing & IT at SLTC. My path centers around developing secure, robust solutions across mobile apps (Flutter), cloud computing infrastructure, and backend integrations. I seek to bridge the gap between design concepts and scalable, robust deployments.
-            </motion.p>
+              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-bold">
+                <Compass className="w-3.5 h-3.5" /> Who I Am
+              </h4>
+              <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
+                I am a passionate software engineer undergraduate pursuing my degree in Computing & IT at SLTC. My path centers around developing secure, robust solutions across mobile applications (Flutter), cloud computing infrastructure, and backend services. I seek to bridge the gap between design concepts and scalable, robust deployments.
+              </p>
+            </motion.div>
 
-            <motion.p
+            {/* Career Goals & Passion */}
+            <motion.div
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 15 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-gray-400 leading-relaxed"
+              transition={{ duration: 0.5, delay: 0.12 }}
+              className="mb-8"
             >
-              Whether it is architecting REST APIs, fine-tuning neural network modules for predictive features, or securing deployment environments, I focus on coding practices that yield clean, maintainable systems.
-            </motion.p>
+              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-bold">
+                <Target className="w-3.5 h-3.5" /> Career Goals & Passion
+              </h4>
+              <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
+                My goal is to architect highly available, distributed microservices, secure API endpoints, and clean mobile applications. I enjoy tackling complex backend structures, configuring container environments, and optimizing database pipelines to deliver top-tier user experiences.
+              </p>
+            </motion.div>
+
+            {/* Interests & Specialities */}
+            <motion.div
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 15 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.16 }}
+            >
+              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-wider mb-3 flex items-center gap-1.5 font-bold">
+                <Heart className="w-3.5 h-3.5" /> Areas of Interest
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {interests.map((interest) => (
+                  <span 
+                    key={interest} 
+                    className="text-xs font-mono text-gray-300 bg-white/5 border border-white/8 px-3 py-1.5 rounded-full hover:border-[#3B82F6]/40 hover:bg-[#3B82F6]/5 transition-colors duration-200"
+                  >
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
           {/* Right Column: Credentials & Stats (5 spans) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
+            
             {/* Quick Education Details Card */}
             <motion.div
               whileInView={{ opacity: 1, y: 0 }}
@@ -102,8 +147,8 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   initial={{ opacity: 0, y: 15 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-                  className="glass-panel p-4 rounded-xl text-center border border-white/5"
+                  transition={{ duration: 0.5, delay: 0.25 + i * 0.06 }}
+                  className="glass-panel p-4 rounded-xl text-center border border-white/5 hover-target"
                 >
                   <p className="text-2xl sm:text-3xl font-extrabold text-[#3B82F6]">
                     {stat.value}

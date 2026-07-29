@@ -1,63 +1,59 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, Code } from "lucide-react";
+import { GraduationCap, Calendar, BookOpen } from "lucide-react";
 
-const experienceData = [
+const educationData = [
   {
-    title: "Final Year Project — WHALES Simulator",
-    subtitle: "SLTC Computing Faculty",
-    date: "2027",
-    desc: "Spearheaded the architecture and implementation of an AI finance coaching platform with sandbox investment markets for Sri Lankan financial literacy.",
-    icon: Code,
+    title: "BSc (Hons) in Cloud Computing",
+    subtitle: "SLTC Research University, Sri Lanka",
+    date: "2024 - Present",
+    desc: "Specializing in virtualization infrastructure, cloud service architectures (Azure/AWS), distributed system networks, and application containerization platforms.",
+    details: "Relevant Coursework: Distributed Systems, Cloud Automation, Virtualization, Cryptographic Protocols, and Machine Learning Systems."
   },
   {
-    title: "Freelance Flutter & Backend Developer",
-    subtitle: "Self-Employed",
-    date: "2025 - 2026",
-    desc: "Shipped fully functional custom applications connecting cross-platform Dart codebases with Flask/FastAPI REST integrations.",
-    icon: Briefcase,
+    title: "AWS Cloud Technical Essentials",
+    subtitle: "Amazon Web Services Academy",
+    date: "2025",
+    desc: "Comprehensive hands-on training covering Amazon EC2, AWS Identity & Access Management (IAM), Amazon VPC configurations, and RDS setups.",
+    details: "Focus Areas: Multi-Region Deployment, Secure Cloud Networking, and Scalability Optimization."
   },
   {
-    title: "Banking Security Risk Mitigation",
-    subtitle: "Academic Research project",
-    date: "2026",
-    desc: "Performed a root-cause remediation analysis of the Cargills Bank breach, publishing the defensive engineering architecture report in IEEE guidelines.",
-    icon: Code,
-  },
+    title: "G.C.E. Advanced Level (A/L)",
+    subtitle: "Engineering Technology Stream",
+    date: "2021 - 2023",
+    desc: "Completed secondary education specializing in engineering foundations, electronics, mechanical physics, and programming logic.",
+    details: "Subject Stream: Engineering Technology (ET), Science for Technology (SFT), and Information & Communication Technology (ICT)."
+  }
 ];
 
-export default function Experience() {
+export default function Education() {
   return (
-    <section id="experience" className="py-24 border-t border-white/5 relative bg-[#050505] overflow-hidden">
+    <section id="education" className="py-24 border-t border-white/5 relative overflow-hidden bg-[#050505]">
       {/* Background glow */}
-      <div className="absolute right-0 top-1/4 w-80 h-80 bg-[#3B82F6]/3 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute left-0 bottom-1/4 w-80 h-80 bg-[#3B82F6]/3 rounded-full blur-[110px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Title */}
         <div className="flex flex-col items-start mb-16">
           <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-sm uppercase tracking-wider">
-            <Briefcase className="w-4 h-4" />
-            08 / Experience
+            <GraduationCap className="w-4 h-4" />
+            04 / Education
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase font-space">
-            Work Experience
+            Education
           </h2>
           <div className="w-16 h-1 bg-[#3B82F6] mt-4 rounded-full" />
         </div>
 
-        {/* Timeline container */}
+        {/* Timeline Layout */}
         <div className="relative max-w-3xl mx-auto flex flex-col items-stretch">
-          
           {/* Vertical center bar */}
           <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2" />
 
-          {/* Timeline Nodes */}
-          {experienceData.map((item, index) => {
+          {educationData.map((item, index) => {
             const isLeft = index % 2 === 0;
-            const IconComponent = item.icon;
-            
             return (
               <div
                 key={item.title}
@@ -65,8 +61,7 @@ export default function Experience() {
                   isLeft ? "sm:flex-row-reverse" : ""
                 }`}
               >
-                
-                {/* 1. Date side (Desktop only) */}
+                {/* 1. Date (Desktop only) */}
                 <div className="hidden sm:flex w-1/2 justify-center items-center px-8 text-right">
                   <div
                     className={`flex items-center gap-2 text-xs font-mono font-bold text-gray-500 ${
@@ -78,9 +73,9 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* 2. Middle Circle Node */}
+                {/* 2. Middle Node */}
                 <div className="absolute left-4 sm:left-1/2 top-0 -translate-x-1/2 w-8 h-8 rounded-full border border-white/10 bg-[#111111] flex items-center justify-center text-[#3B82F6] z-10 shadow-lg shadow-black/40">
-                  <IconComponent className="w-4 h-4" />
+                  <GraduationCap className="w-4 h-4" />
                 </div>
 
                 {/* 3. Card side */}
@@ -101,12 +96,20 @@ export default function Experience() {
                     <h3 className="font-bold text-white text-base leading-tight mb-1 font-space">
                       {item.title}
                     </h3>
-                    <p className="text-xs font-mono text-[#3B82F6] mb-4">
+                    <p className="text-xs font-mono text-[#3B82F6] mb-3">
                       {item.subtitle}
                     </p>
-                    <p className="text-xs text-gray-400 leading-relaxed">
+                    <p className="text-xs text-gray-400 leading-relaxed mb-4">
                       {item.desc}
                     </p>
+
+                    {/* Coursework details block */}
+                    <div className="bg-white/[0.02] border border-white/5 p-3 rounded-lg flex items-start gap-2">
+                      <BookOpen className="w-3.5 h-3.5 text-[#3B82F6] shrink-0 mt-0.5" />
+                      <p className="text-[10px] text-gray-400 leading-relaxed font-mono">
+                        <strong className="text-white uppercase">Focus:</strong> {item.details}
+                      </p>
+                    </div>
                   </motion.div>
                 </div>
               </div>

@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Mail, ArrowDownRight, Award, Briefcase, Code, Cloud } from "lucide-react";
 import { Github, Linkedin } from "@/components/icons";
-import Image from "next/image";
 
 const titles = [
+  "Software Engineer",
   "Cloud Computing Undergraduate",
+  "Full Stack Developer",
   "Flutter Developer",
   "Backend Developer",
-  "AI Enthusiast",
+  "Cloud Enthusiast",
 ];
 
 // Tech icons list with background styles and coordinates for floating placement
@@ -28,6 +29,19 @@ const techIcons = [
 export default function Hero() {
   const [titleIdx, setTitleIdx] = useState(0);
 
+  // Mouse parallax motion values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 60, damping: 25 });
+  const springY = useSpring(mouseY, { stiffness: 60, damping: 25 });
+
+  const parallaxX = useTransform(springX, (val) => val * 20);
+  const parallaxY = useTransform(springY, (val) => val * 20);
+
+  const orbX = useTransform(springX, (val) => val * -30);
+  const orbY = useTransform(springY, (val) => val * -30);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTitleIdx((prev) => (prev + 1) % titles.length);
@@ -35,9 +49,26 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const x = (e.clientX - rect.left - width / 2) / (width / 2);
+    const y = (e.clientY - rect.top - height / 2) / (height / 2);
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
     <section
       id="home"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="min-h-screen pt-32 pb-16 flex items-center justify-center relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
@@ -48,7 +79,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-sm font-semibold tracking-widest text-[#3B82F6] uppercase mb-3 font-mono"
+            className="text-xs sm:text-sm font-semibold tracking-widest text-[#3B82F6] uppercase mb-3 font-mono"
           >
             Hello, I'm
           </motion.p>
@@ -57,7 +88,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-[0.95] text-white flex flex-col mb-4 uppercase"
+            className="text-4xl sm:text-7xl font-extrabold tracking-tight leading-[0.95] text-white flex flex-col mb-4 uppercase font-space"
           >
             <span>Thimeth</span>
             <span className="bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-white bg-clip-text text-transparent">
@@ -74,7 +105,7 @@ export default function Hero() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -25, opacity: 0 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="text-lg sm:text-2xl font-semibold text-gray-300 font-mono flex items-center gap-2"
+                className="text-base sm:text-xl font-semibold text-gray-300 font-mono flex items-center gap-2"
               >
                 <Code className="w-5 h-5 text-[#60A5FA]" />
                 {titles[titleIdx]}
@@ -86,10 +117,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed mb-8"
+            className="text-sm sm:text-base text-gray-400 max-w-xl leading-relaxed mb-8"
           >
-            I build modern mobile applications, cloud-based solutions, and scalable backend systems.
-            Passionate about Flutter, Cloud Computing, AI, and creating user-friendly digital experiences.
+            I build modern, scalable, and user-focused web and mobile applications with beautiful UI, secure backends, and cloud technologies.
           </motion.p>
 
           {/* Action CTAs */}
@@ -100,17 +130,23 @@ export default function Hero() {
             className="flex flex-wrap items-center gap-4 mb-8"
           >
             <a
-              href="#contact"
-              className="bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-[#3B82F6]/20 transition-all duration-300 flex items-center gap-2 hover-target"
+              href="#projects"
+              className="bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-xs px-6 py-3.5 rounded-full shadow-lg shadow-[#3B82F6]/20 transition-all duration-300 flex items-center gap-2 hover-target"
             >
-              Let's Talk
+              View Projects
               <ArrowDownRight className="w-4 h-4" />
             </a>
             <a
-              href="#projects"
-              className="glass-card text-gray-300 hover:text-white hover:bg-white/5 font-semibold text-sm px-8 py-3.5 rounded-full transition-all duration-300 hover-target"
+              href="#contact"
+              className="glass-card text-gray-300 hover:text-white hover:bg-white/5 font-semibold text-xs px-6 py-3.5 rounded-full transition-all duration-300 hover-target"
             >
-              View Projects
+              Download CV
+            </a>
+            <a
+              href="#contact"
+              className="glass-card text-gray-300 hover:text-white hover:bg-white/5 font-semibold text-xs px-6 py-3.5 rounded-full transition-all duration-300 hover-target"
+            >
+              Contact Me
             </a>
           </motion.div>
 
@@ -153,8 +189,11 @@ export default function Hero() {
         <div className="lg:col-span-5 flex justify-center items-center relative py-12 lg:py-0">
           <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px]">
             
-            {/* Glowing Accent Orbs Behind */}
-            <div className="absolute inset-0 bg-[#3B82F6]/20 rounded-full blur-[65px] animate-pulse duration-[6000ms]" />
+            {/* Glowing Accent Orbs Behind (Parallax mapped) */}
+            <motion.div 
+              style={{ x: orbX, y: orbY }}
+              className="absolute inset-0 bg-[#3B82F6]/20 rounded-full blur-[65px] animate-pulse duration-[6000ms]" 
+            />
             <div className="absolute inset-8 border border-white/5 rounded-full animate-[spin_40s_linear_infinite]" />
             <div className="absolute inset-16 border border-[#3B82F6]/25 border-dashed rounded-full animate-[spin_60s_linear_infinite]" />
 
@@ -181,15 +220,16 @@ export default function Hero() {
               {"=>"}
             </motion.div>
 
-            {/* Profile Circle Photo with hover scale */}
+            {/* Profile Circle Photo with hover scale & parallax displacement */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
+              style={{ x: parallaxX, y: parallaxY }}
               transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
-              className="absolute inset-4 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl z-10"
+              className="absolute inset-4 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl z-10 hover-target"
             >
               <img
-                src="profile.jpg"
+                src="/portfolio/profile.jpg"
                 alt="Thimeth Chathnuka"
                 className="w-full h-full object-cover object-top scale-[1.05] hover:scale-[1.12] transition-transform duration-500"
               />
@@ -197,6 +237,7 @@ export default function Hero() {
 
             {/* Card 1: 2+ Years Learning (Top-Left) */}
             <motion.div
+              style={{ x: parallaxX, y: parallaxY }}
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="glass-card absolute -left-10 top-[18%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
@@ -210,6 +251,7 @@ export default function Hero() {
 
             {/* Card 2: Flutter Developer (Top-Right) */}
             <motion.div
+              style={{ x: parallaxX, y: parallaxY }}
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
               className="glass-card absolute -right-8 top-[24%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
@@ -223,6 +265,7 @@ export default function Hero() {
 
             {/* Card 3: Cloud Computing (Bottom-Right) */}
             <motion.div
+              style={{ x: parallaxX, y: parallaxY }}
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
               className="glass-card absolute -right-10 top-[68%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
@@ -236,6 +279,7 @@ export default function Hero() {
 
             {/* Card 4: Open Source (Bottom-Left) */}
             <motion.div
+              style={{ x: parallaxX, y: parallaxY }}
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
               className="glass-card absolute -left-8 top-[62%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
@@ -251,7 +295,7 @@ export default function Hero() {
             {techIcons.map((icon, i) => (
               <motion.div
                 key={icon.name}
-                style={{ top: icon.top, left: icon.left, right: icon.right }}
+                style={{ top: icon.top, left: icon.left, right: icon.right, x: parallaxX, y: parallaxY }}
                 animate={{
                   y: [0, Math.sin(i) * 8, 0],
                   x: [0, Math.cos(i) * 8, 0],
