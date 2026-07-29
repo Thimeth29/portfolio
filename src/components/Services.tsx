@@ -73,8 +73,7 @@ export default function Services() {
                 initial={{ opacity: 0, y: 25 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.55, delay: i * 0.08 }}
-                whileHover={{ y: -6 }}
-                className="glass-card p-8 rounded-2xl border border-white/5 hover:border-[#3B82F6]/40 hover:shadow-[0_12px_30px_rgba(59,130,246,0.06)] transition-all duration-300 flex flex-col justify-between items-start text-left group hover-target"
+                className="glass-card p-8 rounded-2xl border border-white/5 hover:border-[#3B82F6]/40 hover:shadow-[0_12px_30px_rgba(59,130,246,0.06)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between items-start text-left group hover-target"
               >
                 <div className="w-full">
                   {/* Icon Block */}

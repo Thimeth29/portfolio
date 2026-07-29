@@ -28,6 +28,7 @@ const techIcons = [
 
 export default function Hero() {
   const [titleIdx, setTitleIdx] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Mouse parallax motion values
   const mouseX = useMotionValue(0);
@@ -36,17 +37,31 @@ export default function Hero() {
   const springX = useSpring(mouseX, { stiffness: 60, damping: 25 });
   const springY = useSpring(mouseY, { stiffness: 60, damping: 25 });
 
-  const parallaxX = useTransform(springX, (val) => val * 20);
-  const parallaxY = useTransform(springY, (val) => val * 20);
+  const parallaxX = useTransform(springX, (val) => isMobile ? 0 : val * 20);
+  const parallaxY = useTransform(springY, (val) => isMobile ? 0 : val * 20);
 
-  const orbX = useTransform(springX, (val) => val * -30);
-  const orbY = useTransform(springY, (val) => val * -30);
+  const orbX = useTransform(springX, (val) => isMobile ? 0 : val * -30);
+  const orbY = useTransform(springY, (val) => isMobile ? 0 : val * -30);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTitleIdx((prev) => (prev + 1) % titles.length);
     }, 3200);
-    return () => clearInterval(timer);
+
+    const checkMobile = () => {
+      setIsMobile(
+        window.matchMedia("(max-width: 768px)").matches ||
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0
+      );
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -199,21 +214,21 @@ export default function Hero() {
 
             {/* Floating Code Symbols */}
             <motion.div
-              animate={{ y: [0, -12, 0], rotate: [0, 10, 0] }}
+              animate={isMobile ? undefined : { y: [0, -12, 0], rotate: [0, 10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="absolute left-[15%] top-[8%] z-0 font-mono text-sm text-[#3B82F6]/30 font-bold"
             >
               {"</>"}
             </motion.div>
             <motion.div
-              animate={{ y: [0, 10, 0], rotate: [0, -10, 0] }}
+              animate={isMobile ? undefined : { y: [0, 10, 0], rotate: [0, -10, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute right-[22%] bottom-[12%] z-0 font-mono text-base text-[#60A5FA]/25 font-bold"
             >
               {"{ }"}
             </motion.div>
             <motion.div
-              animate={{ y: [0, -8, 0] }}
+              animate={isMobile ? undefined : { y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
               className="absolute right-[12%] top-[40%] z-0 font-mono text-xs text-white/10 font-bold"
             >
@@ -224,7 +239,7 @@ export default function Hero() {
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              style={{ x: parallaxX, y: parallaxY }}
+              style={{ x: isMobile ? 0 : parallaxX, y: isMobile ? 0 : parallaxY }}
               transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
               className="absolute inset-4 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl z-10 hover-target"
             >
@@ -237,8 +252,8 @@ export default function Hero() {
 
             {/* Card 1: 2+ Years Learning (Top-Left) */}
             <motion.div
-              style={{ x: parallaxX, y: parallaxY }}
-              animate={{ y: [0, -6, 0] }}
+              style={{ x: isMobile ? 0 : parallaxX, y: isMobile ? 0 : parallaxY }}
+              animate={isMobile ? undefined : { y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="glass-card absolute -left-10 top-[18%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
             >
@@ -251,8 +266,8 @@ export default function Hero() {
 
             {/* Card 2: Flutter Developer (Top-Right) */}
             <motion.div
-              style={{ x: parallaxX, y: parallaxY }}
-              animate={{ y: [0, 6, 0] }}
+              style={{ x: isMobile ? 0 : parallaxX, y: isMobile ? 0 : parallaxY }}
+              animate={isMobile ? undefined : { y: [0, 6, 0] }}
               transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
               className="glass-card absolute -right-8 top-[24%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
             >
@@ -265,8 +280,8 @@ export default function Hero() {
 
             {/* Card 3: Cloud Computing (Bottom-Right) */}
             <motion.div
-              style={{ x: parallaxX, y: parallaxY }}
-              animate={{ y: [0, -6, 0] }}
+              style={{ x: isMobile ? 0 : parallaxX, y: isMobile ? 0 : parallaxY }}
+              animate={isMobile ? undefined : { y: [0, -6, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
               className="glass-card absolute -right-10 top-[68%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
             >
@@ -279,8 +294,8 @@ export default function Hero() {
 
             {/* Card 4: Open Source (Bottom-Left) */}
             <motion.div
-              style={{ x: parallaxX, y: parallaxY }}
-              animate={{ y: [0, 6, 0] }}
+              style={{ x: isMobile ? 0 : parallaxX, y: isMobile ? 0 : parallaxY }}
+              animate={isMobile ? undefined : { y: [0, 6, 0] }}
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
               className="glass-card absolute -left-8 top-[62%] z-20 px-3 py-1.5 rounded-xl flex items-center gap-2 border border-white/10 shadow-lg"
             >
@@ -292,7 +307,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Floating Small Technology Badges */}
-            {techIcons.map((icon, i) => (
+            {!isMobile && techIcons.map((icon, i) => (
               <motion.div
                 key={icon.name}
                 style={{ top: icon.top, left: icon.left, right: icon.right, x: parallaxX, y: parallaxY }}

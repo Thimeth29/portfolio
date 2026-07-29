@@ -9,11 +9,20 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
+    // Touch devices perform far better using native, compositor-driven inertia scrolling
+    const isTouchDevice =
+      typeof window !== "undefined" && (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        (navigator as any).msMaxTouchPoints > 0
+      );
+    if (isTouchDevice) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential easing
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.2,
+      touchMultiplier: 0,
     });
 
     // Hook up lenis animation frames

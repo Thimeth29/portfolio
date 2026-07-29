@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, HelpCircle, Map } from "lucide-react";
 
@@ -13,6 +13,16 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 640px)").matches);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,8 +56,8 @@ export default function Contact() {
           {/* Left Column: Form (7 columns on large screens) */}
           <div className="lg:col-span-7 flex flex-col">
             <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              initial={{ opacity: 0, x: isMobile ? 0 : -30, y: isMobile ? 20 : 0 }}
               viewport={{ once: true }}
               className="glass-card p-8 rounded-2xl border border-white/8 text-left h-full"
             >
@@ -141,8 +151,8 @@ export default function Contact() {
             
             {/* Info Cards */}
             <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              initial={{ opacity: 0, x: isMobile ? 0 : 30, y: isMobile ? 20 : 0 }}
               viewport={{ once: true }}
               className="glass-card p-6 rounded-2xl border border-white/8 text-left flex flex-col gap-6"
             >
@@ -184,8 +194,8 @@ export default function Contact() {
 
             {/* Dark premium Mock Google Map view */}
             <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              initial={{ opacity: 0, x: isMobile ? 0 : 30, y: isMobile ? 20 : 0 }}
               viewport={{ once: true }}
               className="glass-card rounded-2xl border border-white/8 overflow-hidden relative aspect-video flex-grow flex items-center justify-center group"
             >

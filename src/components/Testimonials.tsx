@@ -56,8 +56,7 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 25 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.55, delay: i * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="glass-card p-8 rounded-2xl border border-white/5 flex flex-col justify-between items-start text-left relative group hover-target"
+              className="glass-card p-8 rounded-2xl border border-white/5 flex flex-col justify-between items-start text-left relative group hover-target hover:-translate-y-1.5 transition-transform duration-300"
             >
               {/* Quote icon watermark */}
               <Quote className="absolute right-6 top-6 w-8 h-8 text-white/3 opacity-20 pointer-events-none group-hover:scale-110 transition-transform duration-300" />

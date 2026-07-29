@@ -85,6 +85,36 @@ html.lenis, html.lenis body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
 }
 
+/* GPU accelerated float animations for particles */
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-30px);
+    opacity: 0.8;
+  }
+}
+
+.animate-float-particle {
+  animation: floatParticle var(--duration, 6s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+/* Mobile glass card overrides to bypass expensive blur layers */
+@media (max-width: 768px) {
+  .glass-panel {
+    background: rgba(11, 11, 11, 0.95);
+    backdrop-filter: none;
+  }
+  .glass-card {
+    background: rgba(17, 17, 17, 0.9);
+    backdrop-filter: none;
+  }
+}
+
 /* Hide cursor on desktop pointer devices */
 @media (any-pointer: fine) {
   .custom-cursor-active, 

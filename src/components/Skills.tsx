@@ -80,12 +80,7 @@ export default function Skills() {
                 initial={{ opacity: 0, y: 24 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.55, delay: catIdx * 0.08 }}
-                whileHover={{ 
-                  scale: 1.03, 
-                  boxShadow: "0 10px 30px rgba(59, 130, 246, 0.12)",
-                  borderColor: "rgba(59, 130, 246, 0.4)"
-                }}
-                className="glass-card p-5 rounded-2xl border border-white/5 transition-all duration-300 hover:bg-white/[0.04] text-left flex flex-col h-full group hover-target"
+                className="glass-card p-5 rounded-2xl border border-white/5 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_30px_rgba(59,130,246,0.12)] hover:border-[#3B82F6]/40 hover:bg-white/[0.04] text-left flex flex-col h-full group hover-target"
               >
                 {/* Category Header with SVG progress ring */}
                 <div className="flex justify-between items-start border-b border-white/5 pb-4 mb-4">
