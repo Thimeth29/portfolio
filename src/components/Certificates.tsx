@@ -5,7 +5,7 @@ import { Award, Cloud, ExternalLink } from "lucide-react";
 
 export default function Certificates() {
   return (
-    <section id="certificates" className="py-24 border-t border-white/5 relative bg-[#09090B]">
+    <section id="certificates" className="py-24 border-t border-white/5 relative bg-[#050505] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Title */}
@@ -14,7 +14,7 @@ export default function Certificates() {
             <Award className="w-4 h-4" />
             05 / Credentials
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase font-space">
             Certifications
           </h2>
           <div className="w-16 h-1 bg-[#3B82F6] mt-4 rounded-full" />
@@ -37,7 +37,7 @@ export default function Certificates() {
                   <Cloud className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-xl leading-snug group-hover:text-[#60A5FA] transition-colors duration-200">
+                  <h3 className="font-bold text-white text-xl leading-snug group-hover:text-[#60A5FA] transition-colors duration-200 font-space">
                     AWS Cloud Technical Essentials
                   </h3>
                   <p className="text-sm font-mono text-gray-400 mt-1">

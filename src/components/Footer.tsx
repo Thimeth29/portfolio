@@ -5,11 +5,16 @@ import { Github, Linkedin } from "@/components/icons";
 
 export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // If lenis smooth scroll is present, use it for back to top
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo("#home");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
-    <footer className="bg-[#09090B] border-t border-white/5 py-12 relative z-10">
+    <footer className="bg-[#050505] border-t border-white/5 py-12 relative z-10">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Logo and Copyright */}
@@ -28,7 +33,7 @@ export default function Footer() {
 
         {/* Quick links & Socials */}
         <div className="flex flex-col sm:flex-row items-center gap-6">
-          <div className="flex items-center gap-6 text-xs font-mono">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
             <a href="#about" className="text-gray-400 hover:text-white transition-colors hover-target">
               About
             </a>
@@ -38,8 +43,8 @@ export default function Footer() {
             <a href="#projects" className="text-gray-400 hover:text-white transition-colors hover-target">
               Projects
             </a>
-            <a href="#experience" className="text-gray-400 hover:text-white transition-colors hover-target">
-              Experience
+            <a href="#education" className="text-gray-400 hover:text-white transition-colors hover-target">
+              Education
             </a>
           </div>
 

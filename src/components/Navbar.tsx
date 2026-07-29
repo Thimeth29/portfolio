@@ -10,8 +10,7 @@ const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Certificates", href: "#certificates" },
+  { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -36,7 +35,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#09090B]/70 backdrop-blur-md border-b border-white/8 py-4"
+            ? "bg-[#050505]/70 backdrop-blur-md border-b border-white/8 py-4"
             : "bg-transparent py-6"
         }`}
       >
@@ -114,7 +113,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-[73px] left-0 right-0 z-40 bg-[#09090B]/98 backdrop-blur-lg border-b border-white/8 md:hidden overflow-hidden"
+            className="fixed top-[73px] left-0 right-0 z-40 bg-[#050505]/98 backdrop-blur-lg border-b border-white/8 md:hidden overflow-hidden"
           >
             <ul className="flex flex-col px-6 py-6 gap-4">
               {navLinks.map((link) => (
