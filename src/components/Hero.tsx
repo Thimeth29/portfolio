@@ -189,7 +189,7 @@ export default function Hero() {
               className="absolute inset-4 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl z-10"
             >
               <img
-                src="profile.jpg"
+                src="/portfolio/profile.jpg"
                 alt="Thimeth Chathnuka"
                 className="w-full h-full object-cover object-top scale-[1.05] hover:scale-[1.12] transition-transform duration-500"
               />
