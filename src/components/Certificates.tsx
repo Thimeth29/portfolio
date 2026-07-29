@@ -27,8 +27,7 @@ export default function Certificates() {
             initial={{ opacity: 0, y: 24 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            whileHover={{ y: -6, borderColor: "rgba(59, 130, 246, 0.4)" }}
-            className="glass-card p-8 rounded-2xl border border-white/8 hover:shadow-[0_15px_40px_rgba(59,130,246,0.1)] transition-all duration-300 max-w-xl w-full text-left group"
+            className="glass-card p-8 rounded-2xl border border-white/8 hover:shadow-[0_15px_40px_rgba(59,130,246,0.1)] hover:border-[#3B82F6]/40 hover:-translate-y-1.5 transition-all duration-300 max-w-xl w-full text-left group"
           >
             {/* Header info with AWS styled icon */}
             <div className="flex items-start justify-between gap-4 mb-8">

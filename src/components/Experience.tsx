@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, Code } from "lucide-react";
 
@@ -28,6 +29,17 @@ const experienceData = [
 ];
 
 export default function Experience() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 640px)").matches);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section id="experience" className="py-24 border-t border-white/5 relative bg-[#050505] overflow-hidden">
       {/* Background glow */}
@@ -86,8 +98,8 @@ export default function Experience() {
                 {/* 3. Card side */}
                 <div className="w-full sm:w-1/2 pl-12 sm:pl-0 sm:px-8">
                   <motion.div
-                    whileInView={{ opacity: 1, x: 0 }}
-                    initial={{ opacity: 0, x: isLeft ? 35 : -35 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    initial={{ opacity: 0, x: isMobile ? 0 : (isLeft ? 35 : -35), y: isMobile ? 20 : 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.55 }}
                     className="glass-card p-6 rounded-2xl border border-white/5 text-left hover-target"

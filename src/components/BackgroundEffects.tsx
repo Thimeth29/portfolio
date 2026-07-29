@@ -65,23 +65,15 @@ export default function BackgroundEffects() {
       {/* 4. Tiny Floating Particle Dots */}
       <div className="absolute inset-0 opacity-[0.4]">
         {particlesData.map((part, i) => (
-          <motion.div
+          <div
             key={i}
-            className="absolute w-1 h-1 bg-[#60A5FA] rounded-full"
+            className="absolute w-1 h-1 bg-[#60A5FA] rounded-full animate-float-particle"
             style={{
               top: part.top,
               left: part.left,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: part.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: part.delay,
-            }}
+              "--duration": `${part.duration}s`,
+              "--delay": `${part.delay}s`,
+            } as React.CSSProperties}
           />
         ))}
       </div>
