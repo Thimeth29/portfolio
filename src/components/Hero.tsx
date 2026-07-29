@@ -188,12 +188,10 @@ export default function Hero() {
               transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
               className="absolute inset-4 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl z-10"
             >
-              <Image
-                src="/profile.jpg"
+              <img
+                src="profile.jpg"
                 alt="Thimeth Chathnuka"
-                fill
-                priority
-                className="object-cover object-top scale-[1.05] hover:scale-[1.12] transition-transform duration-500"
+                className="w-full h-full object-cover object-top scale-[1.05] hover:scale-[1.12] transition-transform duration-500"
               />
             </motion.div>
 
