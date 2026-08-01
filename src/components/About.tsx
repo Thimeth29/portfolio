@@ -25,7 +25,7 @@ export default function About() {
       <div className="absolute left-0 bottom-1/4 w-80 h-80 bg-[#3B82F6]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Title */}
         <div className="flex flex-col items-start mb-16">
           <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-sm uppercase tracking-wider">
@@ -40,7 +40,7 @@ export default function About() {
 
         {/* Content Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Column: Bio details (7 spans) */}
           <div className="lg:col-span-7 flex flex-col text-left">
             <motion.h3
@@ -65,7 +65,7 @@ export default function About() {
                 <Compass className="w-3.5 h-3.5" /> Who I Am
               </h4>
               <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                I am a passionate software engineer undergraduate pursuing my degree in Computing & IT at SLTC. My path centers around developing secure, robust solutions across mobile applications (Flutter), cloud computing infrastructure, and backend services. I seek to bridge the gap between design concepts and scalable, robust deployments.
+                I am a Cloud Computing undergraduate with hands-on experience in designing, developing, and deploying cloud-based applications. I have practical knowledge of cloud platforms, containerization, web services, and cloud deployment workflows. I have worked with technologies such as Microsoft Azure, AWS, Docker, cloud storage solutions, and database-driven applications.I am passionate about cloud architecture, DevOps practices, automation, and developing reliable solutions using modern cloud technologies.
               </p>
             </motion.div>
 
@@ -81,7 +81,7 @@ export default function About() {
                 <Target className="w-3.5 h-3.5" /> Career Goals & Passion
               </h4>
               <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                My goal is to architect highly available, distributed microservices, secure API endpoints, and clean mobile applications. I enjoy tackling complex backend structures, configuring container environments, and optimizing database pipelines to deliver top-tier user experiences.
+                Passionate about Cloud Computing and DevOps, with a career goal of becoming a skilled Cloud Engineer by designing scalable, secure, and efficient cloud solutions. I aim to continuously improve my knowledge of cloud technologies, automation, and modern infrastructure practices while contributing to innovative cloud-based projects.
               </p>
             </motion.div>
 
@@ -97,8 +97,8 @@ export default function About() {
               </h4>
               <div className="flex flex-wrap gap-2">
                 {interests.map((interest) => (
-                  <span 
-                    key={interest} 
+                  <span
+                    key={interest}
                     className="text-xs font-mono text-gray-300 bg-white/5 border border-white/8 px-3 py-1.5 rounded-full hover:border-[#3B82F6]/40 hover:bg-[#3B82F6]/5 transition-colors duration-200"
                   >
                     {interest}
@@ -110,7 +110,7 @@ export default function About() {
 
           {/* Right Column: Credentials & Stats (5 spans) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            
+
             {/* Quick Education Details Card */}
             <motion.div
               whileInView={{ opacity: 1, y: 0 }}

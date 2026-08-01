@@ -6,12 +6,9 @@ import { Mail, ArrowDownRight, Award, Briefcase, Code, Cloud } from "lucide-reac
 import { Github, Linkedin } from "@/components/icons";
 
 const titles = [
-  "Software Engineer",
   "Cloud Computing Undergraduate",
-  "Full Stack Developer",
-  "Flutter Developer",
-  "Backend Developer",
-  "Cloud Enthusiast",
+  "AI Enthusiast",
+  "Cloud Security Enthusiast",
 ];
 
 // Tech icons list with background styles and coordinates for floating placement
@@ -87,7 +84,7 @@ export default function Hero() {
       className="min-h-screen pt-32 pb-16 flex items-center justify-center relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
-        
+
         {/* LEFT COLUMN: Text Info */}
         <div className="lg:col-span-7 flex flex-col justify-center text-left">
           <motion.p
@@ -134,7 +131,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-sm sm:text-base text-gray-400 max-w-xl leading-relaxed mb-8"
           >
-            I build modern, scalable, and user-focused web and mobile applications with beautiful UI, secure backends, and cloud technologies.
+            I build modern, scalable, and cloud-driven solutions by designing secure architectures, deploying applications on cloud platforms, and implementing reliable infrastructure using cloud technologies
           </motion.p>
 
           {/* Action CTAs */}
@@ -203,11 +200,11 @@ export default function Hero() {
         {/* RIGHT COLUMN: Interactive Portrait & Floating elements */}
         <div className="lg:col-span-5 flex justify-center items-center relative py-12 lg:py-0">
           <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px]">
-            
+
             {/* Glowing Accent Orbs Behind (Parallax mapped) */}
-            <motion.div 
+            <motion.div
               style={{ x: orbX, y: orbY }}
-              className="absolute inset-0 bg-[#3B82F6]/20 rounded-full blur-[65px] animate-pulse duration-[6000ms]" 
+              className="absolute inset-0 bg-[#3B82F6]/20 rounded-full blur-[65px] animate-pulse duration-[6000ms]"
             />
             <div className="absolute inset-8 border border-white/5 rounded-full animate-[spin_40s_linear_infinite]" />
             <div className="absolute inset-16 border border-[#3B82F6]/25 border-dashed rounded-full animate-[spin_60s_linear_infinite]" />

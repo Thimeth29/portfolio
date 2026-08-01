@@ -339,7 +339,7 @@ export default function Projects() {
                 </span>
 
                 {/* Project Image Banner */}
-                <div className="w-full h-44 sm:h-56 rounded-2xl overflow-hidden border border-white/5 bg-white mb-6 relative flex items-center justify-center">
+                <div className="w-full h-44 sm:h-56 rounded-2xl overflow-hidden border border-white/5 bg-zinc-950/40 mb-6 relative flex items-center justify-center">
                   <img
                     src={proj.image}
                     alt={proj.title}
@@ -385,6 +385,7 @@ export default function Projects() {
       <AnimatePresence>
         {isOpen && activeProjectIdx !== null && project && (
           <motion.div
+            data-lenis-prevent
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -427,7 +428,7 @@ export default function Projects() {
               </div>
 
               {/* Modal Body */}
-              <div className="overflow-y-auto p-6 sm:p-8 flex-grow flex flex-col gap-8">
+              <div data-lenis-prevent className="overflow-y-auto p-6 sm:p-8 flex-grow flex flex-col gap-8">
                 
                 {/* STAR Log Grid */}
                 <div>
