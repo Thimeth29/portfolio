@@ -139,7 +139,7 @@ export default function IntroLoader({ onComplete }: { onComplete: () => void }) 
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="text-xs sm:text-sm font-mono text-[#A1A1AA] tracking-widest uppercase"
                   >
-                    Software Engineer • Cloud Undergraduate • Full Stack
+                    AI Enthusiast • Cloud Undergraduate • Cloud Security Enthusiast 
                   </motion.p>
                 )}
               </AnimatePresence>
