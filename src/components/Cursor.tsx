@@ -92,7 +92,7 @@ export default function Cursor() {
     <>
       {/* Inner dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-[#3B82F6] rounded-full pointer-events-none z-[9999] will-change-transform"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#3B82F6] rounded-full pointer-events-none z-[999999] will-change-transform"
         style={{
           x: mouseX,
           y: mouseY,
@@ -105,7 +105,7 @@ export default function Cursor() {
       />
       {/* Outer lagging ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-[#60A5FA]/40 rounded-full pointer-events-none z-[9998] mix-blend-screen will-change-transform"
+        className="fixed top-0 left-0 w-8 h-8 border border-[#60A5FA]/40 rounded-full pointer-events-none z-[999998] mix-blend-screen will-change-transform"
         style={{
           x: cursorX,
           y: cursorY,
