@@ -131,7 +131,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-sm sm:text-base text-gray-400 max-w-xl leading-relaxed mb-8"
           >
-            I build modern, scalable, and cloud-driven solutions by designing secure architectures, deploying applications on cloud platforms, and implementing reliable infrastructure using cloud technologies
+            I build scalable cloud solutions using modern cloud technologies, secure architectures, and DevOps practices to create reliable, efficient, and future-ready applications.
           </motion.p>
 
           {/* Action CTAs */}
