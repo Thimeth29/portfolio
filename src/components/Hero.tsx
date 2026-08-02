@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Mail, ArrowDownRight, Award, Briefcase, Code, Cloud } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowDownRight, Award, Briefcase, Code, Cloud } from "lucide-react";
 import { Github, Linkedin } from "@/components/icons";
 
 const titles = [
@@ -157,46 +157,65 @@ export default function Hero() {
             >
               Download CV
             </a>
-            <a
-              href="#contact"
-              className="glass-card text-gray-300 hover:text-white hover:bg-white/5 font-semibold text-xs px-6 py-3.5 rounded-full transition-all duration-300 hover-target"
-            >
-              Contact Me
-            </a>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Social Links & Contact Details */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex items-center gap-5"
+            className="flex flex-col gap-6"
           >
-            <a
-              href="https://github.com/Thimeth29"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Profile"
-              className="text-gray-400 hover:text-white p-2 hover:bg-white/5 rounded-full transition-colors duration-200 hover-target"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/thimeth-chathnuka"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-              className="text-gray-400 hover:text-white p-2 hover:bg-white/5 rounded-full transition-colors duration-200 hover-target"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="mailto:thimethofficial2@gmail.com"
-              aria-label="Send Email"
-              className="text-gray-400 hover:text-white p-2 hover:bg-white/5 rounded-full transition-colors duration-200 hover-target"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
+            {/* Social Icons */}
+            <div className="flex items-center gap-5">
+              <a
+                href="https://github.com/Thimeth29"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="text-gray-400 hover:text-white p-2 hover:bg-white/5 rounded-full transition-colors duration-200 hover-target"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/thimeth-chathnuka"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="text-gray-400 hover:text-white p-2 hover:bg-white/5 rounded-full transition-colors duration-200 hover-target"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="mailto:thimethofficial2@gmail.com"
+                aria-label="Send Email"
+                className="text-gray-400 hover:text-white p-2 hover:bg-white/5 rounded-full transition-colors duration-200 hover-target"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+
+            {/* Direct Contact Details */}
+            <div className="flex flex-wrap gap-x-6 gap-y-3 text-xs sm:text-sm text-gray-400 border-t border-white/5 pt-4">
+              <a
+                href="tel:0714319886"
+                className="flex items-center gap-2 hover:text-[#3B82F6] transition-colors duration-200 hover-target"
+              >
+                <Phone className="w-4 h-4 text-[#3B82F6]" />
+                <span className="font-mono">0714319886</span>
+              </a>
+              <a
+                href="mailto:thimethofficial2@gmail.com"
+                className="flex items-center gap-2 hover:text-[#3B82F6] transition-colors duration-200 hover-target"
+              >
+                <Mail className="w-4 h-4 text-[#3B82F6]" />
+                <span>thimethofficial2@gmail.com</span>
+              </a>
+              <div className="flex items-center gap-2 text-gray-400">
+                <MapPin className="w-4 h-4 text-[#3B82F6]" />
+                <span>Colombo, Sri Lanka</span>
+              </div>
+            </div>
           </motion.div>
         </div>
 

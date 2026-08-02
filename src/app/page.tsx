@@ -11,7 +11,6 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Certificates from "@/components/Certificates";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Cursor = dynamic(() => import("@/components/Cursor"), { ssr: false });
@@ -64,7 +63,6 @@ export default function Home() {
           <Education />
           <Certificates />
           <GithubStats />
-          <Contact />
         </main>
 
         <Footer />
