@@ -86,7 +86,10 @@ export default function Navbar() {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="#contact"
+              href="/portfolio/Thimeth_Chathnuka_CV.pdf"
+              download="Thimeth_Chathnuka_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="glass-panel text-xs font-semibold px-4 py-2.5 rounded-full text-white hover:bg-white hover:text-black border border-white/10 hover:border-white transition-all duration-300 flex items-center gap-2 hover-target"
             >
               <FileText className="w-3.5 h-3.5" />
@@ -148,7 +151,10 @@ export default function Navbar() {
                   </a>
                 </div>
                 <a
-                  href="#contact"
+                  href="/portfolio/Thimeth_Chathnuka_CV.pdf"
+                  download="Thimeth_Chathnuka_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white text-black text-xs font-semibold px-4 py-2.5 rounded-full flex items-center gap-2"
                 >
                   <FileText className="w-3.5 h-3.5" />

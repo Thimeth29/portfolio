@@ -149,7 +149,10 @@ export default function Hero() {
               <ArrowDownRight className="w-4 h-4" />
             </a>
             <a
-              href="#contact"
+              href="/portfolio/Thimeth_Chathnuka_CV.pdf"
+              download="Thimeth_Chathnuka_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="glass-card text-gray-300 hover:text-white hover:bg-white/5 font-semibold text-xs px-6 py-3.5 rounded-full transition-all duration-300 hover-target"
             >
               Download CV
