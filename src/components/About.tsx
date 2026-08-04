@@ -11,11 +11,14 @@ const stats = [
 ];
 
 const interests = [
-  "Cloud Computing",
-  "Software Engineering",
-  "Artificial Intelligence",
-  "Flutter Dev",
-  "Backend Dev"
+  "Cloud Architecture",
+  "DevOps & CI/CD",
+  "Serverless Systems",
+  "Cloud Security & IAM",
+  "Infrastructure as Code",
+  "Containerization & Docker",
+  "Cloud Automation",
+  "Site Reliability (SRE)"
 ];
 
 export default function About() {
@@ -43,15 +46,6 @@ export default function About() {
 
           {/* Left Column: Bio details (7 spans) */}
           <div className="lg:col-span-7 flex flex-col text-left">
-            <motion.h3
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 15 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl sm:text-3xl font-bold text-white mb-6 font-space"
-            >
-              Translating code into scalable products.
-            </motion.h3>
 
             {/* Who I Am */}
             <motion.div
@@ -65,7 +59,7 @@ export default function About() {
                 <Compass className="w-3.5 h-3.5" /> Who I Am
               </h4>
               <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                I am a Cloud Computing undergraduate with hands-on experience in designing, developing, and deploying cloud-based applications. I have practical knowledge of cloud platforms, containerization, web services, and cloud deployment workflows. I have worked with technologies such as Microsoft Azure, AWS, Docker, cloud storage solutions, and database-driven applications.I am passionate about cloud architecture, DevOps practices, automation, and developing reliable solutions using modern cloud technologies.
+                I am a Cloud Computing undergraduate at Sri Lanka Technology Campus (SLTC) passionate about building and deploying cloud-based applications on AWS and Azure. Over the past few years, I've engineered serverless architectures, containerized applications with Docker, built automated CI/CD pipelines with GitHub Actions and Terraform, and integrated databases including Amazon DocumentDB, DynamoDB, MongoDB, and S3. I am constantly expanding my expertise in Cloud Architecture, DevOps automation, and proactive security IAM policies.
               </p>
             </motion.div>
 
@@ -123,7 +117,7 @@ export default function About() {
                 <GraduationCap className="w-6 h-6 text-[#3B82F6] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-bold text-white text-base">BSc (Hons) in Cloud Computing</h4>
-                  <p className="text-sm text-gray-400 font-mono">SLTC Research University, Sri Lanka</p>
+                  <p className="text-sm text-gray-400 font-mono">Sri Lanka Technology Campus, Sri Lanka</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-xs text-gray-400 font-mono">

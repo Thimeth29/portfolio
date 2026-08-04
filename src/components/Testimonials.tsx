@@ -7,7 +7,7 @@ const reviews = [
   {
     name: "Dr. Priyantha Kumar",
     role: "Senior Lecturer in Computing",
-    org: "SLTC Research University",
+    org: "Sri Lanka Technology Campus",
     text: "Thimeth exhibits an exceptional grasp of software architectures and cloud fundamentals. His project implementations are consistently well-structured, modular, and performant.",
     rating: 5
   },

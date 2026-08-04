@@ -7,7 +7,7 @@ import { Briefcase, Calendar, Code } from "lucide-react";
 const experienceData = [
   {
     title: "Final Year Project — WHALES Simulator",
-    subtitle: "SLTC Computing Faculty",
+    subtitle: "Sri Lanka Technology Campus Computing Faculty",
     date: "2027",
     desc: "Spearheaded the architecture and implementation of an AI finance coaching platform with sandbox investment markets for Sri Lankan financial literacy.",
     icon: Code,
