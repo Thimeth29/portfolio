@@ -5,40 +5,34 @@ import { Laptop, Server, Smartphone, Database, Cloud, Wrench, ChevronRight } fro
 
 const skillCategories = [
   {
-    title: "Frontend",
+    title: "Cloud Platforms",
+    icon: Cloud,
+    level: 95,
+    skills: ["AWS (EC2, S3, IAM)", "Lambda & API Gateway", "ECS, ECR & App Runner", "DocumentDB & S3", "Microsoft Azure"],
+  },
+  {
+    title: "DevOps & IaC",
+    icon: Server,
+    level: 92,
+    skills: ["Docker Containers", "Terraform (IaC)", "GitHub Actions CI/CD", "Git Version Control", "Linux Administration"],
+  },
+  {
+    title: "Languages & Frameworks",
     icon: Laptop,
     level: 90,
-    skills: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+    skills: ["Python & Flask", "JavaScript & TypeScript", "Java & React / Node.js", "Express.js", "Flutter (Cross-Platform)"],
   },
   {
-    title: "Backend",
-    icon: Server,
-    level: 85,
-    skills: ["Node.js", "Express", "Flask", "Python", "Java", "PHP"],
-  },
-  {
-    title: "Mobile",
-    icon: Smartphone,
-    level: 90,
-    skills: ["Flutter", "Dart"],
-  },
-  {
-    title: "Database",
+    title: "Databases & BaaS",
     icon: Database,
-    level: 80,
-    skills: ["MySQL", "SQLite", "MongoDB", "Firebase"],
+    level: 88,
+    skills: ["MongoDB & DocumentDB", "AWS DynamoDB (TTL)", "MySQL & SQLite", "Supabase", "Firebase"],
   },
   {
-    title: "Cloud",
-    icon: Cloud,
-    level: 85,
-    skills: ["Azure", "Docker", "GitHub Actions", "REST APIs"],
-  },
-  {
-    title: "Tools",
+    title: "Security & Observability",
     icon: Wrench,
-    level: 85,
-    skills: ["Git", "VS Code", "Figma", "Postman", "Linux"],
+    level: 88,
+    skills: ["IAM Policies & Hardening", "CloudWatch Logs & Metrics", "AI Workflow Agents", "REST APIs & Postman", "VS Code & Figma"],
   },
 ];
 
@@ -68,8 +62,8 @@ export default function Skills() {
           <div className="w-16 h-1 bg-[#3B82F6] mt-6 rounded-full" />
         </div>
 
-        {/* 6-Column Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 items-stretch">
+        {/* 5-Column Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
           {skillCategories.map((category, catIdx) => {
             const IconComponent = category.icon;
             

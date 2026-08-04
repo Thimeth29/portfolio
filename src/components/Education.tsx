@@ -7,7 +7,7 @@ import { GraduationCap, Calendar, BookOpen } from "lucide-react";
 const educationData = [
   {
     title: "BSc (Hons) in Cloud Computing",
-    subtitle: "SLTC Research University, Sri Lanka",
+    subtitle: "Sri Lanka Technology Campus, Sri Lanka",
     date: "2024 - Present",
     desc: "Specializing in virtualization infrastructure, cloud service architectures (Azure/AWS), distributed system networks, and application containerization platforms.",
     details: "Relevant Coursework: Distributed Systems, Cloud Automation, Virtualization, Cryptographic Protocols, and Machine Learning Systems."

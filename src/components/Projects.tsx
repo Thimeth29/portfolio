@@ -100,7 +100,13 @@ const ReactIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 
 const FramerIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={`${className} fill-[#FF00C8]`} xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 24V12h12L24 0v12H12L0 24zM24 0v12H12L24 0zM0 24h12L0 12v12z" />
+    <path d="M0 24V12h12L24 0v12H12L0 24zM24 0v12H12L0 24zM0 24h12L0 12v12z" />
+  </svg>
+);
+
+const PythonIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={`${className} fill-[#3776AB]`} xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656v2.75H12.1v.826H3.682S0 5.766 0 11.914c0 6.149 3.207 5.945 3.207 5.945h1.914v-2.656s-.103-3.207 3.207-3.207h5.5s3.004.051 3.004-3.004V3.207S17.37 0 11.914 0zm-3.004 1.809a1.004 1.004 0 1 1 0 2.008 1.004 1.004 0 0 1 0-2.008zM12.086 24c6.094 0 5.714-2.656 5.714-2.656v-2.75H11.9v-.826h8.418s3.682.466 3.682-5.682c0-6.149-3.207-5.945-3.207-5.945h-1.914v2.656s.103 3.207-3.207 3.207h-5.5s-3.004-.051-3.004 3.004v5.727S6.63 24 12.086 24zm3.004-1.809a1.004 1.004 0 1 1 0-2.008 1.004 1.004 0 0 1 0 2.008z"/>
   </svg>
 );
 
@@ -149,7 +155,7 @@ const PROJECTS_DATA: Project[] = [
     category: "AWS Cloud DevOps & Automation",
     description: "A fully automated, one-command deployment pipeline containerizing a Flask application with Docker, and pushing releases to AWS ECS Fargate via GitHub Actions on every commit to main.",
     image: "/portfolio/pipeline.png",
-    github: "https://github.com/Thimeth29",
+    github: "https://github.com/Thimeth29/assignment01-new",
     tech: ["Python", "Flask", "Docker", "AWS ECS", "AWS ECR", "GitHub Actions"],
     situation: {
       label: "Situation",
@@ -186,7 +192,7 @@ const PROJECTS_DATA: Project[] = [
     category: "AWS Cloud Infrastructure & Full-Stack Security",
     description: "A secure, self-hosted file-sharing platform featuring a Flask backend, MongoDB/DocumentDB storage, S3 object management, Google OAuth & bcrypt authentication, granular access controls, and full Terraform provisioning automatically deployed via GitHub Actions.",
     image: "/portfolio/cloud_file_share.png",
-    github: "https://github.com/Thimeth29",
+    github: "https://github.com/Thimeth29/CloudFileShare",
     tech: ["Flask", "MongoDB", "AWS S3", "Terraform", "Google OAuth", "AWS App Runner"],
     situation: {
       label: "Situation",
@@ -225,7 +231,7 @@ const PROJECTS_DATA: Project[] = [
     category: "Frontend Engineering & High-End UX",
     description: "A luxury, highly interactive portfolio built with Next.js App Router, Tailwind CSS v4, and TypeScript, featuring smooth Lenis scroll and custom spring-physics cursor animations.",
     image: "/portfolio/portfolio_mockup.png",
-    github: "https://github.com/Thimeth29",
+    github: "https://github.com/Thimeth29/portfolio",
     tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Lenis Scroll", "TypeScript"],
     situation: {
       label: "Situation",
@@ -254,6 +260,44 @@ const PROJECTS_DATA: Project[] = [
     },
     previewIcons: [NextjsIcon, TailwindIcon, ReactIcon, FramerIcon, GitHubActionsIcon],
     previewIconLabels: ["Next.js", "Tailwind", "React", "Framer", "Deploy"]
+  },
+  {
+    id: "cloud-weather",
+    title: "CloudWeather: Serverless Weather Dashboard",
+    subtitle: "Serverless weather app hosted on S3 with Python Lambda, API Gateway, DynamoDB TTL, & Terraform CI/CD",
+    category: "AWS Serverless Architecture",
+    description: "A live, fully serverless weather application featuring an S3 static frontend, a Python 3.12 AWS Lambda backend behind HTTP API Gateway, OpenWeather API integration, DynamoDB search history with 30-day TTL, CloudWatch monitoring, and automated Terraform CI/CD.",
+    image: "/portfolio/weather.png",
+    github: "https://github.com/Thimeth29/CloudWeather",
+    tech: ["AWS Lambda", "API Gateway", "Amazon S3", "DynamoDB", "Python 3.12", "Terraform", "GitHub Actions"],
+    situation: {
+      label: "Situation",
+      badge: "The Problem",
+      text: "Most portfolio weather apps just call a public API straight from the frontend, which exposes API keys and skips any real cloud architecture. A stronger demo needed a proper backend, without paying for an always-on server."
+    },
+    task: {
+      label: "Task",
+      badge: "The Objective",
+      text: "Build a weather dashboard that showcases a genuine serverless AWS architecture end-to-end — hosting, compute, an external API integration, and observability — while staying within a free-tier-friendly, pay-per-use cost model."
+    },
+    action: {
+      label: "Action",
+      badge: "The Execution",
+      points: [
+        "Built a glassmorphism-styled frontend (vanilla HTML/CSS/JS) hosted as a static website on Amazon S3, with an offline 'demo mode' that mocks Lambda responses for local development.",
+        "Wrote a Python 3.12 Lambda function that queries the OpenWeather API, maps the response into a clean JSON payload, and handles CORS, missing-parameter, and upstream-error cases explicitly.",
+        "Exposed the function through an HTTP API Gateway route (GET /weather), keeping the OpenWeather API key server-side only.",
+        "Added optional search-history logging to DynamoDB with a 30-day TTL, and instrumented the whole flow with CloudWatch Logs for invocation, duration, and error-rate visibility.",
+        "Defined every resource — S3 bucket, Lambda, API Gateway, IAM roles, DynamoDB table — in Terraform, and wired a GitHub Actions workflow that runs terraform apply, packages the Lambda, writes the API endpoint into frontend/config.js, and syncs the frontend to S3 on every push."
+      ]
+    },
+    result: {
+      label: "Result",
+      badge: "The Impact",
+      text: "A live, fully serverless weather dashboard that deploys itself end-to-end from a single git push — no servers to patch, and infrastructure that scales to zero when nobody's using it, while still demonstrating IAM least-privilege, API Gateway integration, and cloud-native logging."
+    },
+    previewIcons: [AWSIcon, S3Icon, PythonIcon, TerraformIcon, GitHubActionsIcon],
+    previewIconLabels: ["Lambda", "S3", "Python", "Terraform", "Actions"]
   }
 ];
 
@@ -368,13 +412,25 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* View Details Call To Action */}
-              <button
-                className="relative z-10 w-full sm:w-auto bg-white/5 border border-white/10 group-hover:border-[#3B82F6] group-hover:bg-[#3B82F6]/10 text-white font-semibold text-xs px-6 py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover-target"
-              >
-                View Case Study Details
-                <Eye className="w-4 h-4" />
-              </button>
+              {/* View Details Call To Action & Direct GitHub link */}
+              <div className="relative z-10 w-full flex items-center justify-center gap-2 mt-auto">
+                <button
+                  className="flex-1 bg-white/5 border border-white/10 group-hover:border-[#3B82F6] group-hover:bg-[#3B82F6]/10 text-white font-semibold text-xs py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover-target"
+                >
+                  Case Study
+                  <Eye className="w-4 h-4 text-[#60A5FA]" />
+                </button>
+                <a
+                  href={proj.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="p-3 bg-white/5 hover:bg-white/15 border border-white/10 text-gray-300 hover:text-white rounded-xl transition-all duration-300 flex items-center justify-center hover-target"
+                  title="View GitHub Repository"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -409,7 +465,7 @@ export default function Projects() {
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-base sm:text-lg font-space uppercase">
-                      Case Study: {project.id === 'ecs-pipeline' ? 'AWS ECS' : project.id === 'cloud-file-share' ? 'CloudFileShare' : 'Portfolio'}
+                      Case Study: {project.id === 'ecs-pipeline' ? 'AWS ECS' : project.id === 'cloud-file-share' ? 'CloudFileShare' : project.id === 'cloud-weather' ? 'CloudWeather' : 'Portfolio'}
                     </h4>
                     <p className="text-[10px] text-gray-500 font-mono">
                       Engineering Project Log
