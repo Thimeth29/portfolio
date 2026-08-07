@@ -6,8 +6,9 @@ import { Github, Linkedin } from "@/components/icons";
 export default function Footer() {
   const scrollToTop = () => {
     // If lenis smooth scroll is present, use it for back to top
-    if ((window as any).lenis) {
-      (window as any).lenis.scrollTo("#home");
+    const customWindow = window as unknown as { lenis?: { scrollTo: (target: string) => void } };
+    if (customWindow.lenis) {
+      customWindow.lenis.scrollTo("#home");
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }

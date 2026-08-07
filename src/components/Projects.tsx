@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, X, Cpu, Eye } from "lucide-react";
+import { Briefcase, X, Cpu, Eye, ExternalLink } from "lucide-react";
 import { Github } from "@/components/icons";
 
 // ==========================================
@@ -36,9 +36,9 @@ const AWSIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-const FlaskIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={`${className} fill-[#47C2B4]`} xmlns="http://www.w3.org/2000/svg">
-    <path d="M19 19L14 10V5H15C15.55 5 16 4.55 16 4C16 3.45 15.55 3 15 3H9C8.45 3 8 3.45 8 4C8 4.55 8.45 5 9 5H10V10L5 19C4.27 20.31 5.22 21 6.5 21H17.5C18.78 21 19.73 20.31 19 19ZM11.75 6H12.25V10.2L12.92 11.4L13.75 12.9V13.4H10.25V12.9L11.08 11.4L11.75 10.2V6ZM8.08 17.5L9.67 14.6H14.33L15.92 17.5H8.08Z" />
+const PythonIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={`${className} fill-[#3776AB]`} xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656v2.75H12.1v.826H3.682S0 5.766 0 11.914c0 6.149 3.207 5.945 3.207 5.945h1.914v-2.656s-.103-3.207 3.207-3.207h5.5s3.004.051 3.004-3.004V3.207S17.37 0 11.914 0zm-3.004 1.809a1.004 1.004 0 1 1 0 2.008 1.004 1.004 0 0 1 0-2.008zM12.086 24c6.094 0 5.714-2.656 5.714-2.656v-2.75H11.9v-.826h8.418s3.682.466 3.682-5.682c0-6.149-3.207-5.945-3.207-5.945h-1.914v2.656s.103 3.207-3.207 3.207h-5.5s-3.004-.051-3.004 3.004v5.727S6.63 24 12.086 24zm3.004-1.809a1.004 1.004 0 1 1 0-2.008 1.004 1.004 0 0 1 0 2.008z"/>
   </svg>
 );
 
@@ -71,42 +71,16 @@ const GoogleIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-const NextjsIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 180 180" className={`${className} fill-white`} xmlns="http://www.w3.org/2000/svg">
-    <mask id="nextjsMask">
-      <circle cx="90" cy="90" r="90" fill="white" />
-    </mask>
-    <circle cx="90" cy="90" r="90" fill="black" />
-    <g mask="url(#nextjsMask)">
-      <path d="M149.508 157.52L69.142 54H54v72h14.4V69.757l70.198 90.264c3.92-3.808 7.502-7.986 10.91-12.501zM111.6 54h14.4v72H111.6z" fill="white" />
-    </g>
+const FirebaseIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={`${className} fill-[#FFCA28]`} xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.89 15.75L9.9 3.12c.16-.33.64-.33.8 0l2.02 4.21-8.83 8.42zM20.1 15.75L12.56 1.48c-.2-.37-.76-.37-.96 0L9.9 4.67l10.2 11.08zM10.74 5.38l8.28 8.87-5.59-10.45c-.2-.37-.76-.37-.96 0L10.74 5.38z" fill="#F57C00"/>
+    <path d="M2.87 18.06l1.24-2.58 11.19 11.1c.36.36.95.36 1.31 0l4.31-4.31c.36-.36.36-.95 0-1.31L2.87 18.06z" fill="#FFCA28"/>
   </svg>
 );
 
-const TailwindIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={`${className} fill-[#06B6D4]`} xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 6.036c-2.286 0-3.81 1.107-4.572 3.321 1.524-.738 2.857-.369 4 .093 1.218.49 2.091 1.724 3.056 2.9C15.938 14.162 17.545 15 20.572 15c2.286 0 3.81-1.107 4.572-3.322-1.524.739-2.857.37-4-.092-.958-.386-1.637-1.364-2.457-2.385C17.75 7.973 15.986 6.036 12 6.036zm-8 6.643c-2.286 0-3.81 1.107-4.572 3.321 1.524-.738 2.857-.369 4 .093 1.218.49 2.091 1.724 3.056 2.9 1.455 1.813 3.062 2.651 6.089 2.651 2.286 0 3.81-1.107 4.572-3.322-1.524.739-2.857.37-4-.092-.958-.386-1.637-1.364-2.457-2.385C13.75 14.615 11.986 12.679 8 12.679z" />
-  </svg>
-);
-
-const ReactIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={`${className} fill-none stroke-[#61DAFB]`} strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(0 12 12)" />
-    <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)" />
-    <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)" />
-    <circle cx="12" cy="12" r="2" fill="#61DAFB" />
-  </svg>
-);
-
-const FramerIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={`${className} fill-[#FF00C8]`} xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 24V12h12L24 0v12H12L0 24zM24 0v12H12L0 24zM0 24h12L0 12v12z" />
-  </svg>
-);
-
-const PythonIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={`${className} fill-[#3776AB]`} xmlns="http://www.w3.org/2000/svg">
-    <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656v2.75H12.1v.826H3.682S0 5.766 0 11.914c0 6.149 3.207 5.945 3.207 5.945h1.914v-2.656s-.103-3.207 3.207-3.207h5.5s3.004.051 3.004-3.004V3.207S17.37 0 11.914 0zm-3.004 1.809a1.004 1.004 0 1 1 0 2.008 1.004 1.004 0 0 1 0-2.008zM12.086 24c6.094 0 5.714-2.656 5.714-2.656v-2.75H11.9v-.826h8.418s3.682.466 3.682-5.682c0-6.149-3.207-5.945-3.207-5.945h-1.914v2.656s.103 3.207-3.207 3.207h-5.5s-3.004-.051-3.004 3.004v5.727S6.63 24 12.086 24zm3.004-1.809a1.004 1.004 0 1 1 0-2.008 1.004 1.004 0 0 1 0 2.008z"/>
+const FlutterIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={`${className} fill-[#02569B]`} xmlns="http://www.w3.org/2000/svg">
+    <path d="M14.314 0L2.3 12 6 15.7 21.686 0H14.314zM21.686 12h-7.371l-3.7 3.7 3.7 3.7h7.371l-3.7-3.7 3.7-3.7z" />
   </svg>
 );
 
@@ -149,155 +123,184 @@ interface Project {
 
 const PROJECTS_DATA: Project[] = [
   {
-    id: "ecs-pipeline",
-    title: "Flask Containerization & AWS ECS Fargate GitOps Pipeline",
-    subtitle: "Continuous deployment for containerized Flask apps on AWS ECS Fargate via GitHub Actions",
-    category: "AWS Cloud DevOps & Automation",
-    description: "A fully automated, one-command deployment pipeline containerizing a Flask application with Docker, and pushing releases to AWS ECS Fargate via GitHub Actions on every commit to main.",
-    image: "/portfolio/pipeline.png",
-    github: "https://github.com/Thimeth29/assignment01-new",
-    tech: ["Python", "Flask", "Docker", "AWS ECS", "AWS ECR", "GitHub Actions"],
+    id: "weatherguard-harvest",
+    title: "WeatherGuard Harvest: AWS IoT & Agriculture Analytics Platform",
+    subtitle: "AWS-based telemetry processing platform for intelligent farming and risk alert telemetry",
+    category: "Cloud IoT & Big Data",
+    description: "An automated cloud infrastructure that ingests agriculture telemetry and real-time weather feeds, triggers Lambda evaluations, and dynamically outputs risk status dashboard logs.",
+    image: "/portfolio/weather.png",
+    github: "https://github.com/Thimeth29/CloudWeather",
+    tech: ["AWS Lambda", "Amazon S3", "API Gateway", "DynamoDB", "Python", "React"],
     situation: {
       label: "Situation",
       badge: "The Problem",
-      text: "Manually building, tagging, and deploying containerized applications to AWS is slow and error-prone — every code change required a developer to rebuild the Docker image, push it to a registry, and update the ECS service by hand."
+      text: "Farms lack central telemetry collection systems that aggregate soil telemetry and weather warnings, leaving them vulnerable to unpredicted weather shifts and crop degradation."
     },
     task: {
       label: "Task",
       badge: "The Objective",
-      text: "Build an automated CI/CD pipeline that takes a Flask application from a git push straight through to a running container on AWS, with zero manual deployment steps."
+      text: "Construct a cloud telemetry analytics platform that aggregates weather telemetry in real-time, executing crop-health rule validation engine automatically."
     },
     action: {
       label: "Action",
       badge: "The Execution",
       points: [
-        "Containerized the Flask app with a lightweight python:3.10-slim Dockerfile exposing port 8080.",
-        "Wrote a GitHub Actions workflow (deploy.yml) triggered on every push to main.",
-        "The workflow authenticates to AWS, builds the Docker image, tags it with the Git commit SHA, and pushes it to Amazon ECR.",
-        "It then pulls the existing ECS task definition, injects the new image, and deploys the updated task definition to the ECS service, waiting for deployment stabilization."
+        "Wrote AWS Lambda rules in Python 3.12 integrating crop health formulas with OpenWeather APIs.",
+        "Created an Amazon S3 static client UI featuring telemetry status maps and interactive warning charts.",
+        "Deployed secure routing via Amazon API Gateway using CORS policies and server-side secret integrations."
       ]
     },
     result: {
       label: "Result",
       badge: "The Impact",
-      text: "A fully automated, one-command deployment pipeline: pushing to main is now the only action needed to get code from a developer's machine into a running, load-balanced container on AWS ECS — cutting deployment time from a manual multi-step process to a single automated GitHub Actions run."
+      text: "Developed a secure, cloud-native agriculture tracking prototype scaling dynamically, saving telemetry history cache on AWS DynamoDB automatically."
     },
-    previewIcons: [GitIcon, GitHubActionsIcon, DockerIcon, AWSIcon, FlaskIcon],
-    previewIconLabels: ["Git", "Actions", "Docker", "AWS ECS", "Flask"]
+    previewIcons: [AWSIcon, S3Icon, GitIcon, GitHubActionsIcon],
+    previewIconLabels: ["Lambda", "S3 Store", "Git", "GitHub Actions"]
+  },
+  {
+    id: "mindcare-app",
+    title: "MindCare: Cross-Platform Mental Health Mobile Application",
+    subtitle: "Flutter mobile app for mental wellness logging, counseling location, and coping guides",
+    category: "Mobile Application Engineering",
+    description: "A secure, cross-platform mobile application written in Flutter connecting to Google Maps APIs and Firebase backends to track mood states and assist wellness coaching.",
+    image: "/portfolio/whales.png",
+    github: "https://github.com/Thimeth29",
+    tech: ["Flutter", "Dart", "Firebase", "Google Maps API", "Local Storage"],
+    situation: {
+      label: "Situation",
+      badge: "The Problem",
+      text: "Mental health support services are often fragmented, leaving users without structured logging mechanisms or immediate access to nearby counseling services."
+    },
+    task: {
+      label: "Task",
+      badge: "The Objective",
+      text: "Develop a secure mobile dashboard combining private daily journals, interactive map integrations, and offline coping guides."
+    },
+    action: {
+      label: "Action",
+      badge: "The Execution",
+      points: [
+        "Programmed mobile layouts in Flutter with reactive Dart State Controllers.",
+        "Wrote secure Firebase Auth hooks managing private user collections under strict security guidelines.",
+        "Integrated Google Maps location pins fetching closest wellness clinics dynamically based on user coordinate."
+      ]
+    },
+    result: {
+      label: "Result",
+      badge: "The Impact",
+      text: "Shipped a clean, responsive mobile prototype running at 60 FPS across platforms with real-time Firestore synchronization."
+    },
+    previewIcons: [FlutterIcon, FirebaseIcon, GitIcon],
+    previewIconLabels: ["Flutter", "Firebase", "Git"]
+  },
+  {
+    id: "ecs-pipeline",
+    title: "AWS ECS Fargate Dockerized GitOps Pipeline",
+    subtitle: "Automated container builds, ECR pushes, and ECS service rolling updates via GitHub Actions",
+    category: "DevOps & Cloud Automation",
+    description: "A fully automated CI/CD infrastructure deploying Flask applications on AWS ECS Fargate, managed by Terraform IaC configurations.",
+    image: "/portfolio/pipeline.png",
+    github: "https://github.com/Thimeth29/assignment01-new",
+    tech: ["Docker", "Terraform", "GitHub Actions", "AWS ECS", "AWS ECR", "Flask"],
+    situation: {
+      label: "Situation",
+      badge: "The Problem",
+      text: "Manual container configuration and updates to cloud services are slow and prone to staging configuration mismatches."
+    },
+    task: {
+      label: "Task",
+      badge: "The Objective",
+      text: "Architect a pipeline pushing container releases to AWS ECS Fargate immediately on code check-ins."
+    },
+    action: {
+      label: "Action",
+      badge: "The Execution",
+      points: [
+        "Configured a lightweight Docker container exposing local Flask services.",
+        "Programmed GitHub Actions workflows verifying builds and publishing image tags to Amazon ECR.",
+        "Constructed a Terraform template configuring task definition definitions, target groups, and security settings."
+      ]
+    },
+    result: {
+      label: "Result",
+      badge: "The Impact",
+      text: "Replaced manual server deployments with a GitOps flow updating AWS container tasks securely on code updates."
+    },
+    previewIcons: [DockerIcon, GitHubActionsIcon, AWSIcon, TerraformIcon],
+    previewIconLabels: ["Docker", "Actions", "ECS", "Terraform"]
   },
   {
     id: "cloud-file-share",
-    title: "CloudFileShare: Secure Self-Hosted File-Sharing Platform",
-    subtitle: "Infrastructure-as-Code file storage backend with DocumentDB, S3, Google OAuth, and App Runner",
-    category: "AWS Cloud Infrastructure & Full-Stack Security",
-    description: "A secure, self-hosted file-sharing platform featuring a Flask backend, MongoDB/DocumentDB storage, S3 object management, Google OAuth & bcrypt authentication, granular access controls, and full Terraform provisioning automatically deployed via GitHub Actions.",
+    title: "CloudFileShare: Secure Self-Hosted Storage Hub",
+    subtitle: "Infrastructure-as-code cloud storage platform with S3 bucket caching and Google OAuth",
+    category: "Cloud Security & Infrastructure",
+    description: "A secure, self-hosted file storage platform provisioned with Terraform, executing Flask backend services inside AWS App Runner with MongoDB storage.",
     image: "/portfolio/cloud_file_share.png",
     github: "https://github.com/Thimeth29/CloudFileShare",
-    tech: ["Flask", "MongoDB", "AWS S3", "Terraform", "Google OAuth", "AWS App Runner"],
+    tech: ["Flask", "AWS S3", "Terraform", "Google OAuth", "MongoDB", "App Runner"],
     situation: {
       label: "Situation",
       badge: "The Problem",
-      text: "Sharing files securely often means trusting a third-party service with your data, or spinning up ad-hoc solutions with no access control, audit trail, or expiry — a common gap for teams wanting to keep sensitive files on their own infrastructure."
+      text: "Exposing file sharing backends without encryption or identity validation opens platforms to database leaking."
     },
     task: {
       label: "Task",
       badge: "The Objective",
-      text: "Design and build a secure, self-hosted cloud file-sharing platform with proper authentication, granular sharing controls, and full audit logging — deployable on real AWS infrastructure, not just a local demo."
+      text: "Construct a secure sharing platform integrating Google OAuth authentication and private S3 buckets."
     },
     action: {
       label: "Action",
       badge: "The Execution",
       points: [
-        "Built the backend in Flask with bcrypt password hashing and Google OAuth as a login alternative.",
-        "Implemented file upload/download with a 100MB size cap and file-type whitelist, storing objects in a private, encrypted S3 bucket (with automatic local-storage fallback for development).",
-        "Added tokenized share links with optional password protection and configurable expiry, plus soft-delete for files.",
-        "Built platform-wide access logging (IP, action, timestamp) and an admin dashboard for auditing usage and managing user roles.",
-        "Defined the entire production environment in Terraform: a VPC with private subnets, a DocumentDB (MongoDB-compatible) cluster locked down to app-only access, an encrypted S3 bucket, and IAM roles scoped to least privilege.",
-        "Automated builds with GitHub Actions, pushing Docker images to Amazon ECR, with AWS App Runner auto-deploying the latest image."
+        "Programmed Flask handlers restricting uploads to verified MIME structures.",
+        "Created least-privilege IAM storage credentials inside AWS S3 buckets.",
+        "Provisioned MongoDB databases and Google login callback integrations."
       ]
     },
     result: {
       label: "Result",
       badge: "The Impact",
-      text: "A fully self-hosted, infrastructure-as-code file-sharing platform: every file is encrypted at rest, every access is logged, share links expire on schedule, and a single git push takes a code change from commit to a live, auto-scaled deployment on AWS — with no manual server configuration."
+      text: "Deployed a self-scaling backend running on AWS App Runner with Terraform, locking file storage under strict ACL guidelines."
     },
-    previewIcons: [GoogleIcon, MongoDBIcon, S3Icon, TerraformIcon, AWSIcon],
-    previewIconLabels: ["OAuth", "DocumentDB", "S3", "Terraform", "App Runner"]
+    previewIcons: [AWSIcon, S3Icon, TerraformIcon, GoogleIcon, MongoDBIcon],
+    previewIconLabels: ["AWS App", "S3", "Terraform", "Google", "MongoDB"]
   },
   {
-    id: "portfolio-web",
-    title: "Portfolio Website",
-    subtitle: "Cinematic, dark-themed Next.js portfolio utilizing Lenis smooth scroll and Framer Motion mouse-parallax",
-    category: "Frontend Engineering & High-End UX",
-    description: "A luxury, highly interactive portfolio built with Next.js App Router, Tailwind CSS v4, and TypeScript, featuring smooth Lenis scroll and custom spring-physics cursor animations.",
+    id: "serverless-weather",
+    title: "Serverless Weather Application",
+    subtitle: "Serverless weather log backend using Lambda caching and DynamoDB TTL logs",
+    category: "AWS Serverless Compute",
+    description: "A lightweight cloud-based weather tracker using AWS Lambda API Gateway routing, static S3 asset pages, and DynamoDB log entries.",
     image: "/portfolio/portfolio_mockup.png",
-    github: "https://github.com/Thimeth29/portfolio",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Lenis Scroll", "TypeScript"],
-    situation: {
-      label: "Situation",
-      badge: "The Problem",
-      text: "Generic template portfolios fail to demonstrate advanced frontend and animation capabilities. I wanted to design a luxury, highly interactive, Awwwards-inspired portfolio that reflects modern web engineering standards."
-    },
-    task: {
-      label: "Task",
-      badge: "The Objective",
-      text: "I designed and built this Next.js app, managing the scroll engine integration, preloader clip-path triggers, and responsive layouts."
-    },
-    action: {
-      label: "Action",
-      badge: "The Execution",
-      points: [
-        "Coded custom components using Next.js App Router, Tailwind CSS v4, and TypeScript.",
-        "Integrated Lenis Smooth Scroll and custom cursor springs using Framer Motion to create smooth interpolation.",
-        "Developed a dynamic mouse-parallax hook mapping coordinate shifts to glowing backing structures and cards.",
-        "Solved Next.js hydration conflicts by dynamically importing client-only widgets with SSR disabled."
-      ]
-    },
-    result: {
-      label: "Result",
-      badge: "The Impact",
-      text: "Completed a premium portfolio scoring a perfect lighthouse build rating, running at a locked 60 FPS with fluid motion paths and smooth Lenis curves."
-    },
-    previewIcons: [NextjsIcon, TailwindIcon, ReactIcon, FramerIcon, GitHubActionsIcon],
-    previewIconLabels: ["Next.js", "Tailwind", "React", "Framer", "Deploy"]
-  },
-  {
-    id: "cloud-weather",
-    title: "CloudWeather: Serverless Weather Dashboard",
-    subtitle: "Serverless weather app hosted on S3 with Python Lambda, API Gateway, DynamoDB TTL, & Terraform CI/CD",
-    category: "AWS Serverless Architecture",
-    description: "A live, fully serverless weather application featuring an S3 static frontend, a Python 3.12 AWS Lambda backend behind HTTP API Gateway, OpenWeather API integration, DynamoDB search history with 30-day TTL, CloudWatch monitoring, and automated Terraform CI/CD.",
-    image: "/portfolio/weather.png",
     github: "https://github.com/Thimeth29/CloudWeather",
-    tech: ["AWS Lambda", "API Gateway", "Amazon S3", "DynamoDB", "Python 3.12", "Terraform", "GitHub Actions"],
+    tech: ["AWS Lambda", "API Gateway", "DynamoDB", "Amazon S3", "Python", "Terraform"],
     situation: {
       label: "Situation",
       badge: "The Problem",
-      text: "Most portfolio weather apps just call a public API straight from the frontend, which exposes API keys and skips any real cloud architecture. A stronger demo needed a proper backend, without paying for an always-on server."
+      text: "Always-on servers incur idle hosting charges for simple weather APIs, making serverless computational architectures ideal."
     },
     task: {
       label: "Task",
       badge: "The Objective",
-      text: "Build a weather dashboard that showcases a genuine serverless AWS architecture end-to-end — hosting, compute, an external API integration, and observability — while staying within a free-tier-friendly, pay-per-use cost model."
+      text: "Create a low-cost, pay-per-use backend logging weather search coordinates dynamically on DynamoDB."
     },
     action: {
       label: "Action",
       badge: "The Execution",
       points: [
-        "Built a glassmorphism-styled frontend (vanilla HTML/CSS/JS) hosted as a static website on Amazon S3, with an offline 'demo mode' that mocks Lambda responses for local development.",
-        "Wrote a Python 3.12 Lambda function that queries the OpenWeather API, maps the response into a clean JSON payload, and handles CORS, missing-parameter, and upstream-error cases explicitly.",
-        "Exposed the function through an HTTP API Gateway route (GET /weather), keeping the OpenWeather API key server-side only.",
-        "Added optional search-history logging to DynamoDB with a 30-day TTL, and instrumented the whole flow with CloudWatch Logs for invocation, duration, and error-rate visibility.",
-        "Defined every resource — S3 bucket, Lambda, API Gateway, IAM roles, DynamoDB table — in Terraform, and wired a GitHub Actions workflow that runs terraform apply, packages the Lambda, writes the API endpoint into frontend/config.js, and syncs the frontend to S3 on every push."
+        "Programmed Python Lambda scripts querying public weather APIs on demand.",
+        "Configured a DynamoDB storage database utilizing 30-day TTL expiration metrics.",
+        "Wrote Terraform code automating S3 static deployments."
       ]
     },
     result: {
       label: "Result",
       badge: "The Impact",
-      text: "A live, fully serverless weather dashboard that deploys itself end-to-end from a single git push — no servers to patch, and infrastructure that scales to zero when nobody's using it, while still demonstrating IAM least-privilege, API Gateway integration, and cloud-native logging."
+      text: "Constructed an auto-scaling weather platform that charges only per invocation, reducing operational expenses to near zero."
     },
-    previewIcons: [AWSIcon, S3Icon, PythonIcon, TerraformIcon, GitHubActionsIcon],
-    previewIconLabels: ["Lambda", "S3", "Python", "Terraform", "Actions"]
+    previewIcons: [AWSIcon, S3Icon, PythonIcon, TerraformIcon],
+    previewIconLabels: ["Lambda", "S3", "Python", "Terraform"]
   }
 ];
 
@@ -305,12 +308,10 @@ export default function Projects() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeProjectIdx, setActiveProjectIdx] = useState<number | null>(null);
 
-  // Close modal logic
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  // Lock scroll when modal is active
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -322,7 +323,6 @@ export default function Projects() {
     };
   }, [isOpen]);
 
-  // Keypress listener (Escape to close)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -337,7 +337,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 border-t border-white/5 relative bg-[#050505] overflow-hidden">
-      {/* Background glow effects */}
+      {/* Glow highlight effects */}
       <div className="absolute right-0 bottom-1/4 w-96 h-96 bg-[#3B82F6]/3 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute left-0 top-1/4 w-96 h-96 bg-indigo-500/2 rounded-full blur-[120px] pointer-events-none" />
 
@@ -345,15 +345,15 @@ export default function Projects() {
         
         {/* Title */}
         <div className="flex flex-col items-center mb-16 text-center">
-          <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-sm uppercase tracking-wider">
+          <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-xs uppercase tracking-wider">
             <Briefcase className="w-4 h-4" />
             03 / Works
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase font-space">
-            Featured Projects
+            Project Showcase
           </h2>
           <p className="text-sm text-gray-400 mt-2 font-mono max-w-lg">
-            Engineering project logs documenting cloud containerization, frontend systems, and secure full-stack cloud deployments.
+            Engineering cloud automation pipelines, mobile architectures, and secure serverless applications.
           </p>
           <div className="w-16 h-1 bg-[#3B82F6] mt-4 rounded-full" />
         </div>
@@ -366,53 +366,53 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 30 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
               onClick={() => {
                 setActiveProjectIdx(idx);
                 setIsOpen(true);
               }}
-              className="w-full glass-card p-6 sm:p-8 rounded-3xl border border-white/5 hover:border-[#3B82F6]/30 hover:shadow-[0_20px_50px_rgba(59,130,246,0.08)] transition-all duration-500 flex flex-col justify-between items-center text-center cursor-pointer group relative overflow-hidden"
+              className="w-full glass-card p-6 sm:p-7 rounded-3xl border border-white/5 hover:border-[#3B82F6]/30 hover:shadow-[0_20px_50px_rgba(59,130,246,0.08)] transition-all duration-500 flex flex-col justify-between items-center text-center cursor-pointer group relative overflow-hidden"
             >
-              {/* Soft decorative glow */}
+              {/* Overlay hover decorative gradient */}
               <div className="absolute inset-0 bg-gradient-to-b from-[#3B82F6]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative z-10 w-full flex flex-col items-center flex-grow">
-                {/* Stack Category */}
+                {/* Category tag */}
                 <span className="text-[9px] font-mono font-bold tracking-widest text-[#3B82F6] uppercase bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20 mb-6">
                   {proj.category}
                 </span>
 
-                {/* Project Image Banner */}
-                <div className="w-full h-44 sm:h-56 rounded-2xl overflow-hidden border border-white/5 bg-zinc-950/40 mb-6 relative flex items-center justify-center">
+                {/* Card Banner Image */}
+                <div className="w-full h-44 sm:h-48 rounded-2xl overflow-hidden border border-white/5 bg-zinc-950/60 mb-6 relative flex items-center justify-center">
                   <img
                     src={proj.image}
                     alt={proj.title}
-                    className="w-full h-full object-contain p-2 hover:scale-[1.03] transition-transform duration-500"
+                    className="w-full h-full object-contain p-3 group-hover:scale-[1.04] transition-transform duration-500"
                   />
                 </div>
 
-                {/* Title */}
-                <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-3 group-hover:text-[#60A5FA] transition-colors duration-300 font-space uppercase leading-snug max-w-md">
-                  {proj.title}
+                {/* Project Title */}
+                <h3 className="text-lg sm:text-xl font-extrabold text-white mb-3 group-hover:text-[#60A5FA] transition-colors duration-300 font-space uppercase leading-snug max-w-md">
+                  {proj.id === "weatherguard-harvest" ? "WeatherGuard Harvest" : proj.id === "mindcare-app" ? "MindCare Wellness" : proj.id === "ecs-pipeline" ? "AWS ECS Pipeline" : proj.id === "cloud-file-share" ? "CloudFileShare" : "Serverless Weather"}
                 </h3>
 
-                {/* Description */}
-                <p className="text-xs text-gray-400 leading-relaxed max-w-md mb-6 font-mono flex-grow">
-                  {proj.description}
+                {/* Subtitle */}
+                <p className="text-[10px] text-gray-400 leading-relaxed max-w-md mb-6 font-mono flex-grow">
+                  {proj.subtitle}
                 </p>
 
-                {/* Icons list showing brand logos */}
-                <div className="flex justify-center items-center gap-4 sm:gap-5 mb-8">
+                {/* Technology brand badges */}
+                <div className="flex justify-center items-center gap-4 mb-6">
                   {proj.previewIcons.map((Icon, iconIdx) => (
-                    <div key={iconIdx} className="flex flex-col items-center gap-1.5 opacity-65 group-hover:opacity-100 transition-opacity duration-300">
-                      <Icon className="w-6 h-6" />
-                      <span className="text-[7.5px] font-mono text-gray-500">{proj.previewIconLabels[iconIdx]}</span>
+                    <div key={iconIdx} className="flex flex-col items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                      <Icon className="w-5 h-5" />
+                      <span className="text-[7px] font-mono text-gray-500">{proj.previewIconLabels[iconIdx]}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* View Details Call To Action & Direct GitHub link */}
+              {/* Card Footer actions */}
               <div className="relative z-10 w-full flex items-center justify-center gap-2 mt-auto">
                 <button
                   className="flex-1 bg-white/5 border border-white/10 group-hover:border-[#3B82F6] group-hover:bg-[#3B82F6]/10 text-white font-semibold text-xs py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover-target"
@@ -437,7 +437,7 @@ export default function Projects() {
 
       </div>
 
-      {/* Case Study Details Modal Dialog */}
+      {/* Case Study Details Modal Dialog - Immersive Fullscreen Overlay */}
       <AnimatePresence>
         {isOpen && activeProjectIdx !== null && project && (
           <motion.div
@@ -446,15 +446,15 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeModal}
-            className="fixed inset-0 z-[9999] bg-[#050505]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+            className="fixed inset-0 z-[9999] bg-[#050505]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
           >
             <motion.div
-              initial={{ scale: 0.95, y: 20 }}
+              initial={{ scale: 0.96, y: 30 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 20 }}
+              exit={{ scale: 0.96, y: 30 }}
               transition={{ type: "spring", duration: 0.5 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#0B0B0B] border border-white/10 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col text-left"
+              className="bg-[#0B0B0B] border border-white/10 w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col text-left"
             >
               
               {/* Modal Header */}
@@ -464,16 +464,15 @@ export default function Projects() {
                     <Cpu className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-base sm:text-lg font-space uppercase">
-                      Case Study: {project.id === 'ecs-pipeline' ? 'AWS ECS' : project.id === 'cloud-file-share' ? 'CloudFileShare' : project.id === 'cloud-weather' ? 'CloudWeather' : 'Portfolio'}
+                    <h4 className="font-bold text-white text-sm sm:text-base font-space uppercase">
+                      {project.title}
                     </h4>
-                    <p className="text-[10px] text-gray-500 font-mono">
-                      Engineering Project Log
+                    <p className="text-[9px] text-gray-500 font-mono">
+                      Engineering Project Log • STAR Framework
                     </p>
                   </div>
                 </div>
 
-                {/* Close Button */}
                 <button
                   onClick={closeModal}
                   className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200 hover-target"
@@ -484,63 +483,59 @@ export default function Projects() {
               </div>
 
               {/* Modal Body */}
-              <div data-lenis-prevent className="overflow-y-auto p-6 sm:p-8 flex-grow flex flex-col gap-8">
+              <div data-lenis-prevent className="overflow-y-auto p-6 sm:p-8 flex-grow flex flex-col gap-6">
                 
                 {/* STAR Log Grid */}
-                <div>
-                  <h5 className="text-[10px] font-mono font-bold tracking-widest text-gray-500 uppercase mb-4">
-                    STAR Model Case Study
-                  </h5>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Situation */}
-                    <div className="p-5 rounded-xl border border-white/5 bg-white/[0.01]">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs font-mono font-bold text-[#3B82F6]">{project.situation.label}</span>
-                        <span className="text-[9px] font-mono text-gray-600 bg-white/5 px-2 py-0.5 rounded">{project.situation.badge}</span>
-                      </div>
-                      <p className="text-[11px] sm:text-xs text-gray-300 leading-relaxed font-mono">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Situation */}
+                  <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.01] flex flex-col justify-between">
+                    <div>
+                      <span className="text-[10px] font-mono font-bold tracking-widest text-[#3B82F6] uppercase mb-2 block">
+                        [S] Situation
+                      </span>
+                      <p className="text-xs text-gray-300 leading-relaxed font-mono">
                         {project.situation.text}
                       </p>
                     </div>
+                    <span className="text-[8px] font-mono text-gray-600 uppercase mt-4 block">{project.situation.badge}</span>
+                  </div>
 
-                    {/* Task */}
-                    <div className="p-5 rounded-xl border border-white/5 bg-white/[0.01]">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs font-mono font-bold text-indigo-400">{project.task.label}</span>
-                        <span className="text-[9px] font-mono text-gray-600 bg-white/5 px-2 py-0.5 rounded">{project.task.badge}</span>
-                      </div>
-                      <p className="text-[11px] sm:text-xs text-gray-300 leading-relaxed font-mono">
+                  {/* Task */}
+                  <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.01] flex flex-col justify-between">
+                    <div>
+                      <span className="text-[10px] font-mono font-bold tracking-widest text-indigo-400 uppercase mb-2 block">
+                        [T] Task
+                      </span>
+                      <p className="text-xs text-gray-300 leading-relaxed font-mono">
                         {project.task.text}
                       </p>
                     </div>
+                    <span className="text-[8px] font-mono text-gray-600 uppercase mt-4 block">{project.task.badge}</span>
+                  </div>
 
-                    {/* Action */}
-                    <div className="p-5 rounded-xl border border-white/5 bg-white/[0.01] md:col-span-2">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs font-mono font-bold text-cyan-400">{project.action.label}</span>
-                        <span className="text-[9px] font-mono text-gray-600 bg-white/5 px-2 py-0.5 rounded">{project.action.badge}</span>
-                      </div>
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] sm:text-xs text-gray-300 font-mono">
-                        {project.action.points.map((pt, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="text-cyan-400 mt-0.5 shrink-0">▪</span>
-                            <span>{pt}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* Action */}
+                  <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.01] md:col-span-2">
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-400 uppercase mb-3 block">
+                      [A] Action & Implementation
+                    </span>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-300 font-mono">
+                      {project.action.points.map((pt, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-[#3B82F6] mt-0.5 shrink-0">▪</span>
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                    {/* Result */}
-                    <div className="p-5 rounded-xl border border-white/5 bg-white/[0.01] md:col-span-2">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs font-mono font-bold text-emerald-400">{project.result.label}</span>
-                        <span className="text-[9px] font-mono text-gray-600 bg-white/5 px-2 py-0.5 rounded">{project.result.badge}</span>
-                      </div>
-                      <p className="text-[11px] sm:text-xs text-gray-300 leading-relaxed font-mono">
-                        {project.result.text}
-                      </p>
-                    </div>
+                  {/* Result */}
+                  <div className="p-5 rounded-2xl border border-[#34D399]/10 bg-emerald-950/5 md:col-span-2">
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-emerald-400 uppercase mb-2 block">
+                      [R] Result & Deliverable
+                    </span>
+                    <p className="text-xs text-emerald-300/90 leading-relaxed font-mono">
+                      {project.result.text}
+                    </p>
                   </div>
                 </div>
 
@@ -552,17 +547,18 @@ export default function Projects() {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[10px] font-mono font-bold text-gray-400 hover:text-white transition-colors duration-200 hover-target"
+                  className="flex items-center gap-1.5 text-[9px] font-mono font-bold text-gray-400 hover:text-white transition-colors duration-200 hover-target"
                 >
                   <Github className="w-4 h-4" />
                   GITHUB REPOSITORY
+                  <ExternalLink className="w-3 h-3 text-[#3B82F6]" />
                 </a>
 
                 <button
                   onClick={closeModal}
-                  className="bg-white/5 border border-white/10 hover:bg-white hover:text-black hover:border-white text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-200 hover-target"
+                  className="bg-white/5 border border-white/10 hover:bg-white hover:text-black hover:border-white text-xs font-semibold px-4 py-2 rounded-xl transition-all duration-200 hover-target"
                 >
-                  Close Case Study
+                  Close Log
                 </button>
               </div>
 

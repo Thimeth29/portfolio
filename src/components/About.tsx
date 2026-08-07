@@ -1,159 +1,186 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, GraduationCap, MapPin, BookOpen, Heart, Target, Compass } from "lucide-react";
+import { User, GraduationCap, MapPin, BookOpen, Heart, Target, Compass, Award, ArrowUpRight } from "lucide-react";
 
 const stats = [
   { value: "05+", label: "Projects Completed" },
-  { value: "10+", label: "Technologies Learned" },
-  { value: "2+", label: "Years Learning" },
+  { value: "10+", label: "Technologies Mastered" },
+  { value: "2+", label: "Years Engineering" },
   { value: "500+", label: "GitHub Commits" },
 ];
 
 const interests = [
-  "Cloud Architecture",
-  "DevOps & CI/CD",
-  "Serverless Systems",
-  "Cloud Security & IAM",
-  "Infrastructure as Code",
-  "Containerization & Docker",
-  "Cloud Automation",
-  "Site Reliability (SRE)"
+  "Cloud Architecture (AWS/Azure)",
+  "DevOps Automation & CI/CD",
+  "Serverless Orchestrations",
+  "Infrastructure as Code (IaC)",
+  "Containerization & Kubernetes",
+  "Cloud Security & IAM Hardening",
+  "Cross-Platform App Development",
+  "Site Reliability & Monitoring"
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 border-t border-white/5 relative">
-      {/* Glow aura */}
-      <div className="absolute left-0 bottom-1/4 w-80 h-80 bg-[#3B82F6]/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="about" className="py-24 border-t border-white/5 relative bg-[#050505]">
+      {/* Background radial highlight */}
+      <div className="absolute right-0 bottom-1/4 w-[500px] h-[500px] bg-[#3B82F6]/3 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute left-0 top-1/4 w-[400px] h-[400px] bg-indigo-500/2 rounded-full blur-[110px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
-
+        
         {/* Title */}
         <div className="flex flex-col items-start mb-16">
-          <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-sm uppercase tracking-wider">
+          <div className="flex items-center gap-2 mb-2 font-mono text-[#3B82F6] text-xs uppercase tracking-wider">
             <User className="w-4 h-4" />
             01 / Identity
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase font-space">
             About Me
           </h2>
-          <div className="w-16 h-1 bg-[#3B82F6] mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-[#3B82F6] mt-4 rounded-full animate-pulse" />
         </div>
 
-        {/* Content Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
-          {/* Left Column: Bio details (7 spans) */}
-          <div className="lg:col-span-7 flex flex-col text-left">
-
-            {/* Who I Am */}
-            <motion.div
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 15 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.08 }}
-              className="mb-6"
-            >
-              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-bold">
-                <Compass className="w-3.5 h-3.5" /> Who I Am
+        {/* Bento Box Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+          
+          {/* Bento Cell 1: Storytelling Bio (col-span-8) */}
+          <motion.div
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 25 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="md:col-span-8 glass-card p-8 rounded-3xl border border-white/5 bento-glow-container flex flex-col justify-between text-left hover:border-white/10 transition-all duration-300"
+          >
+            <div>
+              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
+                <Compass className="w-4 h-4" /> Who I Am
               </h4>
-              <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                I am a Cloud Computing undergraduate at Sri Lanka Technology Campus (SLTC) passionate about building and deploying cloud-based applications on AWS and Azure. Over the past few years, I've engineered serverless architectures, containerized applications with Docker, built automated CI/CD pipelines with GitHub Actions and Terraform, and integrated databases including Amazon DocumentDB, DynamoDB, MongoDB, and S3. I am constantly expanding my expertise in Cloud Architecture, DevOps automation, and proactive security IAM policies.
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-6">
+                I am a Cloud Computing undergraduate at Sri Lanka Technology Campus (SLTC) driven by a passion for building, deploying, and hardening scalable cloud ecosystems. 
+                My focus centers on constructing secure, distributed systems, automate deployment architectures, and designing serverless APIs that scale dynamically.
               </p>
-            </motion.div>
-
-            {/* Career Goals & Passion */}
-            <motion.div
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 15 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.12 }}
-              className="mb-8"
-            >
-              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-bold">
-                <Target className="w-3.5 h-3.5" /> Career Goals & Passion
-              </h4>
               <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                Passionate about Cloud Computing and DevOps, with a career goal of becoming a skilled Cloud Engineer by designing scalable, secure, and efficient cloud solutions. I aim to continuously improve my knowledge of cloud technologies, automation, and modern infrastructure practices while contributing to innovative cloud-based projects.
+                Over the past two years, I have containerized microservices with Docker, provisioned private networks with Terraform (IaC), and orchestrated automated GitOps deployment pipelines via GitHub Actions.
               </p>
-            </motion.div>
+            </div>
+            <div className="flex items-center gap-2 mt-8 text-xs font-mono text-[#60A5FA]">
+              <Target className="w-4 h-4" />
+              <span>Career Aim: Senior Cloud Solutions Architect</span>
+            </div>
+          </motion.div>
 
-            {/* Interests & Specialities */}
-            <motion.div
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 15 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.16 }}
-            >
-              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-wider mb-3 flex items-center gap-1.5 font-bold">
-                <Heart className="w-3.5 h-3.5" /> Areas of Interest
+          {/* Bento Cell 2: Education & Location (col-span-4) */}
+          <motion.div
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 25 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="md:col-span-4 glass-card p-8 rounded-3xl border border-white/5 bento-glow-container flex flex-col justify-between text-left hover:border-white/10 transition-all duration-300"
+          >
+            <div>
+              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-widest mb-6 flex items-center gap-2 font-bold">
+                <GraduationCap className="w-4 h-4" /> Education
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <h5 className="font-extrabold text-white text-base sm:text-lg font-space leading-snug">
+                BSc (Hons) in Cloud Computing
+              </h5>
+              <p className="text-xs text-gray-400 font-mono mt-2">
+                Sri Lanka Technology Campus
+              </p>
+            </div>
+            
+            <div className="flex flex-col gap-3 mt-8 border-t border-white/5 pt-6 text-xs text-gray-400 font-mono">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-gray-500 shrink-0" />
+                <span>Sri Lanka</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-gray-500 shrink-0" />
+                <span>Active undergraduate</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Bento Cell 3: Credentials & Certification (col-span-4) */}
+          <motion.div
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 25 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="md:col-span-4 glass-panel p-8 rounded-3xl border border-[#FF9900]/10 bento-glow-container flex flex-col justify-between text-left hover:border-[#FF9900]/25 transition-all duration-300"
+          >
+            <div className="flex justify-between items-start">
+              <div className="w-12 h-12 rounded-2xl bg-[#FF9900]/10 border border-[#FF9900]/20 flex items-center justify-center text-[#FF9900]">
+                <Award className="w-6 h-6" />
+              </div>
+              <span className="text-[8px] font-mono font-bold tracking-widest text-[#FF9900] uppercase bg-[#FF9900]/10 px-2.5 py-1 rounded-md border border-[#FF9900]/20">
+                AWS ACADEMY
+              </span>
+            </div>
+
+            <div className="mt-8">
+              <h5 className="font-extrabold text-white text-sm sm:text-base font-space uppercase">
+                AWS Cloud Technical Essentials
+              </h5>
+              <p className="text-[10px] text-gray-400 font-mono mt-1">
+                Issued by Coursera • Credentials verified
+              </p>
+            </div>
+
+            <a
+              href="https://www.coursera.org/account/accomplishments/verify/ZDDQVO1S0521"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-xs font-mono font-bold text-[#FF9900] hover:text-white transition-colors hover-target"
+            >
+              Verify Credential
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </motion.div>
+
+          {/* Bento Cell 4: Interests & Areas of Expertise (col-span-8) */}
+          <motion.div
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 25 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="md:col-span-8 glass-card p-8 rounded-3xl border border-white/5 bento-glow-container flex flex-col justify-between text-left hover:border-white/10 transition-all duration-300"
+          >
+            <div>
+              <h4 className="text-xs font-mono text-[#3B82F6] uppercase tracking-widest mb-6 flex items-center gap-2 font-bold">
+                <Heart className="w-4 h-4" /> Core Specialities
+              </h4>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {interests.map((interest) => (
-                  <span
+                  <div
                     key={interest}
-                    className="text-xs font-mono text-gray-300 bg-white/5 border border-white/8 px-3 py-1.5 rounded-full hover:border-[#3B82F6]/40 hover:bg-[#3B82F6]/5 transition-colors duration-200"
+                    className="text-xs font-mono text-gray-300 bg-white/5 border border-white/5 px-4 py-2.5 rounded-xl hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/5 transition-all duration-200 flex items-center gap-2 hover-target"
                   >
-                    {interest}
-                  </span>
+                    <span className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full shrink-0" />
+                    <span>{interest}</span>
+                  </div>
                 ))}
               </div>
-            </motion.div>
-          </div>
+            </div>
 
-          {/* Right Column: Credentials & Stats (5 spans) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-
-            {/* Quick Education Details Card */}
-            <motion.div
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 15 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col gap-4 text-left"
-            >
-              <div className="flex items-start gap-4">
-                <GraduationCap className="w-6 h-6 text-[#3B82F6] shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-bold text-white text-base">BSc (Hons) in Cloud Computing</h4>
-                  <p className="text-sm text-gray-400 font-mono">Sri Lanka Technology Campus, Sri Lanka</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 text-xs text-gray-400 font-mono">
-                <div className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4 text-gray-500" />
-                  Sri Lanka
-                </div>
-                <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                <div className="flex items-center gap-1">
-                  <BookOpen className="w-4 h-4 text-gray-500" />
-                  Active Student
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Stats Counter Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  initial={{ opacity: 0, y: 15 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.25 + i * 0.06 }}
-                  className="glass-panel p-4 rounded-xl text-center border border-white/5 hover-target"
-                >
-                  <p className="text-2xl sm:text-3xl font-extrabold text-[#3B82F6]">
+            {/* Quick Stats Grid footer */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 border-t border-white/5 pt-6">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-left">
+                  <p className="text-xl sm:text-2xl font-black text-white font-space">
                     {stat.value}
                   </p>
-                  <p className="text-[10px] sm:text-xs text-gray-400 font-mono uppercase tracking-wider mt-1">
+                  <p className="text-[9px] text-gray-400 font-mono uppercase tracking-wider mt-0.5">
                     {stat.label}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

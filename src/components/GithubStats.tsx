@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FolderGit2, GitBranch, Flame, Code2, ExternalLink, Star } from "lucide-react";
+import { FolderGit2, GitBranch, Flame, Code2, ExternalLink } from "lucide-react";
 import { Github } from "@/components/icons";
 
 interface GitHubData {

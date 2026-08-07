@@ -21,13 +21,14 @@ export default function Cursor() {
     const isTouchDevice =
       "ontouchstart" in window ||
       navigator.maxTouchPoints > 0 ||
-      (navigator as any).msMaxTouchPoints > 0;
+      ((navigator as unknown as { msMaxTouchPoints?: number }).msMaxTouchPoints ?? 0) > 0;
     const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
 
     if (isTouchDevice || isMobileViewport) {
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setEnabled(true);
   }, []);
 

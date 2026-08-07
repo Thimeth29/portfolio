@@ -16,6 +16,7 @@ export default function IntroLoader({ onComplete }: { onComplete: () => void }) 
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowLoader(true);
     document.body.style.overflow = "hidden"; // Disable scroll
 
@@ -41,6 +42,7 @@ export default function IntroLoader({ onComplete }: { onComplete: () => void }) 
     if (!showLoader) return;
 
     if (progress >= 35 && progress < 70) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStage(1);
     } else if (progress >= 100) {
       setStage(2);
@@ -59,7 +61,7 @@ export default function IntroLoader({ onComplete }: { onComplete: () => void }) 
   const firstName = "THIMETH";
   const lastName = "CHATHNUKA";
 
-  const letterAnimation: any = {
+  const letterAnimation: import("framer-motion").Variants = {
     initial: { y: 80, opacity: 0, filter: "blur(6px)", scale: 0.92 },
     animate: (i: number) => ({
       y: 0,

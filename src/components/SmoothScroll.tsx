@@ -14,7 +14,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       typeof window !== "undefined" && (
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
-        (navigator as any).msMaxTouchPoints > 0
+        ((navigator as unknown as { msMaxTouchPoints?: number }).msMaxTouchPoints ?? 0) > 0
       );
     if (isTouchDevice) return;
 
@@ -34,12 +34,12 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     animationFrameId = requestAnimationFrame(raf);
 
     // Expose lenis globally for scroll triggers or GSAP if needed
-    (window as any).lenis = lenis;
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       lenis.destroy();
-      delete (window as any).lenis;
+      delete (window as unknown as { lenis?: Lenis }).lenis;
     };
   }, []);
 

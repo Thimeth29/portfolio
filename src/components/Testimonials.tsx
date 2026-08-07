@@ -71,7 +71,7 @@ export default function Testimonials() {
 
                 {/* Review Text */}
                 <p className="text-sm text-gray-300 leading-relaxed italic mb-8 relative z-10">
-                  "{rev.text}"
+                  &ldquo;{rev.text}&rdquo;
                 </p>
               </div>
 

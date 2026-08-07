@@ -1,36 +1,33 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-// Static data structure to bypass Math.random() recalculations and reflow storms
-const particlesData = [
-  { top: "15%", left: "10%", duration: 6, delay: 0.5 },
-  { top: "25%", left: "45%", duration: 5, delay: 1.2 },
-  { top: "35%", left: "80%", duration: 7, delay: 0.2 },
-  { top: "50%", left: "15%", duration: 6, delay: 2.1 },
-  { top: "60%", left: "65%", duration: 4, delay: 0.8 },
-  { top: "70%", left: "30%", duration: 8, delay: 1.5 },
-  { top: "80%", left: "90%", duration: 5, delay: 0.4 },
-  { top: "90%", left: "55%", duration: 7, delay: 1.0 },
-  { top: "40%", left: "70%", duration: 6, delay: 1.7 },
-  { top: "85%", left: "20%", duration: 5, delay: 2.3 },
-  { top: "10%", left: "85%", duration: 7, delay: 0.9 },
-  { top: "75%", left: "40%", duration: 6, delay: 1.1 }
-];
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+}
 
 export default function BackgroundEffects() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Springs for smooth movement of the background gradient glow
   const glowX = useSpring(mouseX, { damping: 40, stiffness: 120 });
   const glowY = useSpring(mouseY, { damping: 40, stiffness: 120 });
 
   useEffect(() => {
-    // Only capture coordinates on pointer-enabled desktop systems
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile) return;
+    const checkMobile = () => {
+      const mobile = window.matchMedia("(max-width: 768px)").matches;
+      setIsMobile(mobile);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -38,8 +35,121 @@ export default function BackgroundEffects() {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, [mouseX, mouseY]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    const particles: Particle[] = [];
+    const maxParticles = isMobile ? 25 : 65;
+    const connectionDist = isMobile ? 70 : 110;
+    const mouseDist = 160;
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Initialize particles
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.5 + 1,
+      });
+    }
+
+    let mX = -9999;
+    let mY = -9999;
+
+    const updateMousePos = () => {
+      mX = mouseX.get();
+      mY = mouseY.get();
+    };
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+      updateMousePos();
+
+      // Render & update particles
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce off bounds
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(96, 165, 250, 0.45)";
+        ctx.fill();
+      });
+
+      // Draw connection lines
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < connectionDist) {
+            const alpha = (1 - dist / connectionDist) * 0.12;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(96, 165, 250, ${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+
+        // Connect to mouse pointer
+        if (mX > 0 && mY > 0) {
+          const dx = p1.x - mX;
+          const dy = p1.y - mY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < mouseDist) {
+            const alpha = (1 - dist / mouseDist) * 0.22;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(mX, mY);
+            ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isMobile, mouseX, mouseY]);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-[#050505]">
@@ -62,21 +172,8 @@ export default function BackgroundEffects() {
       <div className="absolute bottom-[20%] right-[-15%] w-[600px] h-[600px] rounded-full bg-[#2563EB]/8 blur-[150px] animate-pulse duration-[10000ms]" />
       <div className="absolute top-[40%] right-[20%] w-[400px] h-[400px] rounded-full bg-[#60A5FA]/6 blur-[120px] animate-pulse duration-[7000ms]" />
 
-      {/* 4. Tiny Floating Particle Dots */}
-      <div className="absolute inset-0 opacity-[0.4]">
-        {particlesData.map((part, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-[#60A5FA] rounded-full animate-float-particle"
-            style={{
-              top: part.top,
-              left: part.left,
-              "--duration": `${part.duration}s`,
-              "--delay": `${part.delay}s`,
-            } as React.CSSProperties}
-          />
-        ))}
-      </div>
+      {/* 4. Canvas particles mesh network */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
     </div>
   );
 }
